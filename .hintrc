@@ -8,9 +8,12 @@
       {
         "ignore": [
           "width: fit-content",
-          "text-underline-offset"
+          "text-underline-offset",
+          "height: fit-content",
+          "min-height: fit-content"
         ]
       }
-    ]
+    ],
+    "button-type": "off"
   }
 }
