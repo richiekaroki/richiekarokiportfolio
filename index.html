@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RICHARD KAROKI PORTFOLIO</title>
+    <meta name="description" content="Portfolio of Richard Karoki, a Frontend Developer with expertise in web and mobile development." />
+    <meta name="keywords" content="Richard Karoki, Frontend Developer, Portfolio, Web Development, Mobile Development, HTML, CSS, JavaScript, React, Vue, Next.js" />
+    <meta name="author" content="Richard Karoki" />
+    <title>Richard Karoki | Portfolio</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
@@ -11,62 +14,62 @@
     <nav id="desktop-nav">
       <div class="logo">Richard Karoki</div>
       <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
       </div>
     </nav>
     <nav id="hamburger-nav">
       <div class="logo">Richard Karoki</div>
       <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <ul>
-            <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-          </ul>
-        </div>
+      <div class="hamburger-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu-links">
+        <ul>
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+      </div>
       </div>
     </nav>
     <section id="profile">
       <div class="section__pic-container">
-        <img src="./assets/user2.jpg" alt="Richard Karoki Profile Picture" />
+      <img src="./assets/user2.jpg" alt="Richard Karoki Profile Picture" />
       </div>
       <div class="section__text">
-        <p class="section__text__p1">Hello, I am</p>
-        <h1 class="title">Richard Karoki</h1>
-        <p class="section__text__p2">Frontend Developer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/Richie - Google Docs.pdf')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img src="./assets/linkedin.png" alt="My LinkedIn profile"
-            class="icon" onclick="location.href='https://linkedin.com/in/richard-karoki-007'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/'"
-          />
-        </div>
+      <p class="section__text__p1">Hello, I am</p>
+      <h1 class="title">Richard Karoki</h1>
+      <p class="section__text__p2">Software Developer</p>
+      <div class="btn-container">
+        <button
+        class="btn btn-color-2"
+        onclick="window.open('./assets/Richie-software-engineer.pdf')"
+        >
+        Download CV
+        </button>
+        <button class="btn btn-color-1" onclick="location.href='./#contact'">
+        Contact Info
+        </button>
+      </div>
+      <div id="socials-container">
+        <img src="./assets/linkedin.png" alt="My LinkedIn profile"
+        class="icon" onclick="location.href='https://linkedin.com/in/richard-karoki-007'"
+        />
+        <img
+        src="./assets/github.png"
+        alt="My Github profile"
+        class="icon"
+        onclick="location.href='https://github.com/'"
+        />
+      </div>
       </div>
     </section>
     <section id="about">
@@ -89,9 +92,10 @@
                 class="icon"
               />
               <h3>Experience</h3>
-              <p> <em><b>3+ years Frontend Development</b></em> <br>HTML, CSS, JavaScript, React, Flutter, UI/UX</p>
-              <p><em><b>2+ years Backend Development</b></em> <br>Python frameworks Django and Flask<br></p>
-              <p><em><b>1+ year Version control</b></em> <br>Git and Github<br></p>
+              <p> <em><b>4+ years Frontend Development</b></em> <br>HTML, CSS, JavaScript, React, Vue, Next, Flutter, UI/UX</p>
+              <p><em><b>3+ years Backend Development</b></em> <br>Python frameworks Django and Flask, Node, Express<br></p>
+              <p><em><b>3+ years Version control and API documentation</b></em> <br>Git and Github, REST<br></p>
+              <p><em><b>3+ years Database Management</b></em> <br>MySQL, PostsgreSQL, MongoDB, Firebase<br></p>
               .
             </div>
             <div class="details-container">
@@ -242,17 +246,11 @@
                 alt="Project 1"
                 class="project-img"/>
             </div>
-            <h2 class="experience-sub-title project-title">Project One <br>My Portfolio</h2>
+            <h2 class="experience-sub-title project-title">Project One <br> A mobile application housing recommender system build with flutter and firebase</h2>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" 
-              onclick="location.href='https://github.com/richiekaroki/richiekarokiportfolio.git'">
+              onclick="location.href='https://github.com/richiekaroki/House-Recommender-System'">
                 Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://richiekarokiportfolio.vercel.app/'"
-              >
-                Live Demo
               </button>
             </div>
           </div>
@@ -272,12 +270,6 @@
               >
                 Github
               </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/richiekaroki/AIVirtualMouse.git'"
-              >
-                Live Demo
-              </button>
             </div>
           </div>
           <div class="details-container color-container">
@@ -288,17 +280,17 @@
                 class="project-img"
               />
             </div>
-            <h2 class="experience-sub-title project-title">Project Three</h2>
-            <div class="btn-container">
+            <h2 class="experience-sub-title project-title">Project Three <br> Zoo APP <br> Built with Vue <br> Fetches information of animal then displays message.</h2>
+            <div class="btn-container"> 
               <button
                 class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
+                onclick="location.href='https://github.com/richiekaroki/zoo-app'"
               >
                 Github
               </button>
               <button
                 class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
+                onclick="location.href='https://zoo-app-nu.vercel.app/'"
               >
                 Live Demo
               </button>
@@ -323,7 +315,7 @@
             alt="Email icon"
             class="icon contact-icon email-icon"
           />
-          <p><a href="mailto:examplemail@gmail.com">Example@gmail.com</a></p>
+          <p><a href="mailto:examplemail@gmail.com">karokirichard522@gmail.com</a></p>
         </div>
         <div class="contact-info-container">
           <img
@@ -340,7 +332,7 @@
             alt="Phone call icon"
             class="icon contact-icon"
           />
-          <p>+254 748754251 <br>+254 100903483</a></p>
+          <p>+254 748754251</a></p>
         </div><div class="contact-info-container">
           <img
             src="./assets/whatsapp.png"
