@@ -20,7 +20,7 @@ const page = () => {
   ];
 
   return (
-    <div className="h-full w-full relative flex flex-col items-start gap-8 overflow-hidden">
+    <div className="h-full w-full relative flex flex-col items-start gap-10 overflow-hidden">
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
           Software Engineer<br />Based In Kenya.
@@ -28,72 +28,87 @@ const page = () => {
         <div className="w-16 h-1 bg-primary-sky mt-4" />
       </FramerWrapper>
 
+      {/* Row 1: Text left, Image right */}
       <FramerWrapper y={50} delay={0.15} className="w-full">
-        <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 auto-rows-[200px] sm:auto-rows-[240px]">
-          <div className="sm:col-span-2 sm:row-span-2 relative overflow-hidden rounded-xl">
-            <Image
-              src={robo}
-              alt="Robot companion"
-              fill
-              className="object-cover rounded-xl"
-              sizes="(max-width: 640px) 100vw, 66vw"
-              priority
-            />
+        <div className="w-full flex flex-col sm:flex-row gap-8 items-center">
+          <div className="flex-1">
+            <p className="font-inter text-lg text-muted-foreground max-sm:text-base leading-relaxed">
+              I am a Software Engineer based in Kenya, and I build things that live on the internet.
+              That simple idea is what drives everything I do. Whether it is an AI powered gesture
+              recognition system, a production ready API, or a mobile app that helps people find
+              housing, I find deep satisfaction in turning complex problems into elegant, user
+              friendly solutions.
+            </p>
+            <p className="font-inter text-lg text-muted-foreground max-sm:text-base mt-4 leading-relaxed">
+              My journey into software started with curiosity and a stubborn desire to understand
+              how things work. That curiosity led me through the full stack of modern web
+              development. I work with TypeScript, Python, NestJS, Vue, React, Flutter,
+              PostgreSQL, and Redis on a daily basis.
+            </p>
           </div>
-          <div className="relative overflow-hidden rounded-xl">
-            <Image
-              src={richie2}
-              alt="Richard Karoki portrait"
-              fill
-              className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
-              sizes="(max-width: 640px) 100vw, 33vw"
-            />
-          </div>
-          <div className="relative overflow-hidden rounded-xl">
+          <div className="w-full sm:w-[280px] md:w-[320px] flex-shrink-0 relative overflow-hidden rounded-xl aspect-[3/4]">
             <Image
               src={richie1}
               alt="Richard Karoki at work"
               fill
               className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
-              sizes="(max-width: 640px) 100vw, 33vw"
+              sizes="(max-width: 640px) 100vw, 320px"
+              priority
             />
           </div>
         </div>
       </FramerWrapper>
 
-      <FramerWrapper y={50} delay={0.2} className="w-full">
-        <p className="font-inter text-lg w-full text-muted-foreground max-sm:text-base max-w-2xl leading-relaxed">
-          I am a Software Engineer based in Kenya, and I build things that live on the internet.
-          That simple idea is what drives everything I do. Whether it is an AI powered gesture
-          recognition system, a production ready API, or a mobile app that helps people find
-          housing, I find deep satisfaction in turning complex problems into elegant, user
-          friendly solutions.
-        </p>
-        <p className="font-inter text-lg w-full text-muted-foreground max-sm:text-base mt-4 max-w-2xl leading-relaxed">
-          My journey into software started with curiosity and a stubborn desire to understand
-          how things work. That curiosity led me through the full stack of modern web
-          development. I work with TypeScript, Python, NestJS, Vue, React, Flutter,
-          PostgreSQL, and Redis on a daily basis. I have built housing recommender systems
-          powered by Firebase, enterprise grade job platforms with JWT authentication and
-          webhook delivery, and real time chat applications that serve developer communities.
-        </p>
-        <p className="font-inter text-lg w-full text-muted-foreground max-sm:text-base mt-4 max-w-2xl leading-relaxed">
-          What excites me most is the space where technology meets real human need. I have
-          spent years contributing to open source projects, writing about web development on
-          platforms like Dev.to and Hashnode, and exploring the cutting edge of artificial
-          intelligence and accessibility technology. I believe the best software is built not
-          just with technical skill, but with empathy for the people who will use it.
-        </p>
-        <p className="font-inter text-lg w-full text-muted-foreground max-sm:text-base mt-4 max-w-2xl leading-relaxed">
-          Outside of code, I am someone who values continuous learning and community. I
-          regularly share what I discover through tech blog writing and mentoring. I am
-          always looking for the next interesting problem to solve, the next tool to master,
-          and the next opportunity to collaborate with others who share a passion for
-          building meaningful technology.
-        </p>
+      {/* Row 2: Image left, Text right (swapped) */}
+      <FramerWrapper y={50} delay={0.25} className="w-full">
+        <div className="w-full flex flex-col sm:flex-row gap-8 items-center">
+          <div className="w-full sm:w-[280px] md:w-[320px] flex-shrink-0 relative overflow-hidden rounded-xl aspect-square order-2 sm:order-1">
+            <Image
+              src={richie2}
+              alt="Richard Karoki portrait"
+              fill
+              className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
+              sizes="(max-width: 640px) 100vw, 320px"
+            />
+          </div>
+          <div className="flex-1 order-1 sm:order-2">
+            <p className="font-inter text-lg text-muted-foreground max-sm:text-base leading-relaxed">
+              I have built housing recommender systems powered by Firebase, enterprise grade job
+              platforms with JWT authentication and webhook delivery, and real time chat applications
+              that serve developer communities.
+            </p>
+            <p className="font-inter text-lg text-muted-foreground max-sm:text-base mt-4 leading-relaxed">
+              What excites me most is the space where technology meets real human need. I have
+              spent years contributing to open source projects, writing about web development on
+              platforms like Dev.to and Hashnode, and exploring the cutting edge of artificial
+              intelligence and accessibility technology. I believe the best software is built not
+              just with technical skill, but with empathy for the people who will use it.
+            </p>
+            <p className="font-inter text-lg text-muted-foreground max-sm:text-base mt-4 leading-relaxed">
+              Outside of code, I am someone who values continuous learning and community. I
+              regularly share what I discover through tech blog writing and mentoring. I am
+              always looking for the next interesting problem to solve, the next tool to master,
+              and the next opportunity to collaborate with others who share a passion for
+              building meaningful technology.
+            </p>
+          </div>
+        </div>
       </FramerWrapper>
 
-      <FramerWrapper className="w-full" y={50} delay={0.3}>
+      {/* Robot image - full width stretched */}
+      <FramerWrapper y={50} delay={0.3} className="w-full">
+        <div className="relative w-full h-[200px] sm:h-[280px] md:h-[340px] overflow-hidden rounded-xl">
+          <Image
+            src={robo}
+            alt="Robot companion"
+            fill
+            className="object-cover rounded-xl"
+            sizes="100vw"
+          />
+        </div>
+      </FramerWrapper>
+
+      <FramerWrapper className="w-full" y={50} delay={0.35}>
         <div className="w-full flex flex-row justify-between max-lg:flex-col gap-6">
           {[
             { name: "Language", answer: "English", icon: <Languages className="h-11 w-11" /> },
@@ -110,7 +125,7 @@ const page = () => {
         </div>
       </FramerWrapper>
 
-      <FramerWrapper className="w-full" y={50} delay={0.35}>
+      <FramerWrapper className="w-full" y={50} delay={0.4}>
         <h2 className="gap-2 text-2xl sm:text-3xl font-source-serif text-primary font-semibold flex items-center">
           <Heart className="h-6 w-6 sm:h-7 sm:w-7" /> Hobbies
         </h2>
