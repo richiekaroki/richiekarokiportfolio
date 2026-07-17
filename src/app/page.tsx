@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
 import HeroContent from "@/components/HeroContent";
@@ -22,12 +24,12 @@ export default function Home() {
         </div>
       </FramerWrapper>
       {/* RIGHT SIDE image  */}
-      <FramerWrapper className="hidden lg:block h-full w-[47%] relative" y={0} x={100}>
+      <FramerWrapper className="hidden lg:flex h-full w-[35%] max-w-[380px] relative items-center justify-center" y={0} x={100}>
         <HeroImage />
       </FramerWrapper>
 
       {/* MOBILE IMAGE  */}
-      <FramerWrapper className="block lg:hidden w-full max-w-[280px] aspect-square mx-auto my-4" y={50} delay={0.3}>
+      <FramerWrapper className="block lg:hidden w-full max-w-[220px] aspect-square mx-auto my-4" y={50} delay={0.3}>
         <HeroImage />
       </FramerWrapper>
 
