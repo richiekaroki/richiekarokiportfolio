@@ -29,24 +29,33 @@ const page = () => {
       </FramerWrapper>
 
       <FramerWrapper y={50} delay={0.15} className="w-full">
-        <div className="w-full flex flex-col sm:flex-row gap-5">
-          <div className="relative w-full sm:w-3/5 overflow-hidden">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 auto-rows-[200px] sm:auto-rows-[240px]">
+          <div className="sm:col-span-2 sm:row-span-2 relative overflow-hidden rounded-xl">
             <Image
               src={richie1}
               alt="Richard Karoki at work"
-              width={600}
-              height={400}
-              className="w-full h-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
+              fill
+              className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
+              sizes="(max-width: 640px) 100vw, 66vw"
               priority
             />
           </div>
-          <div className="relative w-full sm:w-2/5 overflow-hidden">
+          <div className="relative overflow-hidden rounded-xl">
             <Image
               src={richie2}
               alt="Richard Karoki portrait"
-              width={400}
-              height={400}
-              className="w-full h-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
+              fill
+              className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
+              sizes="(max-width: 640px) 100vw, 33vw"
+            />
+          </div>
+          <div className="relative overflow-hidden rounded-xl">
+            <Image
+              src={robo}
+              alt="Robot companion"
+              fill
+              className="object-cover rounded-xl"
+              sizes="(max-width: 640px) 100vw, 33vw"
             />
           </div>
         </div>
@@ -117,17 +126,6 @@ const page = () => {
         </div>
       </FramerWrapper>
 
-      <FramerWrapper y={50} delay={0.4} className="w-full">
-        <div className="relative w-full overflow-hidden rounded-xl">
-          <Image
-            src={robo}
-            alt="Robot companion"
-            width={1200}
-            height={400}
-            className="w-full h-auto object-cover rounded-xl"
-          />
-        </div>
-      </FramerWrapper>
     </div>
   );
 };
