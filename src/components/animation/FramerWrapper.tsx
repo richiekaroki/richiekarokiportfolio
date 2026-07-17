@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 type FramerMotionProps = {
     children: React.ReactNode,
@@ -13,8 +13,17 @@ type FramerMotionProps = {
 function FramerWrapper({children, delay = 0.25, y = 15, x = 0, duration = 0.20, scale = 0, className}: FramerMotionProps) {
   const shouldReduceMotion = useReducedMotion();
   const hasAnimated = useRef(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  if (!mounted) {
     return <div className={className}>{children}</div>;
   }
 
