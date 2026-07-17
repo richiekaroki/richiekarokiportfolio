@@ -83,7 +83,7 @@ export default function ProjectsPage() {
       </FramerWrapper>
 
       <FramerWrapper y={50} delay={0.1} className="w-full">
-        <div className="relative w-full h-64 rounded-lg overflow-hidden">
+        <div className="relative w-full aspect-video max-h-[280px] rounded-lg overflow-hidden">
           <Image
             src={work1}
             alt="Richard Karoki - Work"
@@ -103,14 +103,19 @@ export default function ProjectsPage() {
         </p>
       </FramerWrapper>
 
-      <div className="w-full flex flex-row flex-wrap gap-4 max-lg:flex-col">
-        {featured.map((val, indx) => (
-          <ProjectCard key={indx} value={val} num={indx} />
+      {/* Featured: first card full-width, rest in 2-col grid */}
+      <FramerWrapper y={50} delay={0.2} className="w-full">
+        <ProjectCard value={featured[0]} num={0} featured />
+      </FramerWrapper>
+
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {featured.slice(1).map((val, indx) => (
+          <ProjectCard key={indx} value={val} num={indx + 1} />
         ))}
       </div>
 
       {showAll && (
-        <div className="w-full flex flex-row flex-wrap gap-4 max-lg:flex-col">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
           {more.map((val, indx) => (
             <ProjectCard key={indx} value={val} num={indx + featured.length} />
           ))}

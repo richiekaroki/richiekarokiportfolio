@@ -41,6 +41,7 @@ const ContactForm = () => {
               id="name"
               name="name"
               required
+              autoComplete="name"
               placeholder="Your name"
             />
           </div>
@@ -51,6 +52,7 @@ const ContactForm = () => {
               id="SenderEmail"
               name="SenderEmail"
               required
+              autoComplete="email"
               placeholder="you@example.com"
             />
           </div>
@@ -66,7 +68,7 @@ const ContactForm = () => {
           </div>
         </CardContent>
         <CardFooter>
-          <Button type="submit" className="w-full" disabled={isPending}>
+          <Button type="submit" className="w-full" disabled={isPending} aria-live="polite">
             {isPending ? "Sending..." : "Send message"}
           </Button>
         </CardFooter>

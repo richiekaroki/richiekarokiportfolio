@@ -1,7 +1,7 @@
 const HeroContent = () => {
   return (
     <>
-      <h3 className="font-inter text-lg sm:text-xl md:text-2xl">My Name is</h3>
+      <p className="font-inter text-lg sm:text-xl md:text-2xl">My Name is</p>
       <h1 className="font-source-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl name_underline text-primary leading-tight">
         Richard <br /> Karoki .
       </h1>

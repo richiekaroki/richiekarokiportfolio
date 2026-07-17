@@ -96,7 +96,7 @@ function Dock({
         height: height,
         scrollbarWidth: 'none',
       }}
-      className='mx-0 sm:mx-2 flex max-w-full items-end overflow-x-auto'
+      className='mx-0 sm:mx-2 flex max-w-full items-end overflow-x-visible'
     >
       <motion.div
         onMouseMove={({ pageX }) => {
@@ -157,7 +157,6 @@ function DockItem({ children, className }: DockItemProps) {
       )}
       tabIndex={0}
       role='button'
-      aria-label={undefined}
     >
       {Children.map(children, (child) =>
         cloneElement(child as React.ReactElement<Record<string, unknown>>, { width, isHovered } as Record<string, unknown>)

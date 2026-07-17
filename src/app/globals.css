@@ -16,7 +16,7 @@
  
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
-    --primary-sky: 216.24deg 89.95% 57.06%;
+    --primary-sky: 216.24 89.95% 57.06%;
  
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -54,7 +54,7 @@
     --secondary-foreground: 0 0% 100%;
  
     --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 65%;
+    --muted-foreground: 0 0% 78%;
  
     --accent: 0 0% 12%;
     --accent-foreground: 0 0% 100%;

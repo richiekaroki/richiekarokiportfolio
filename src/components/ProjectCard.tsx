@@ -19,24 +19,39 @@ interface ProjectCardProps {
     link: string;
   };
   num: number;
+  featured?: boolean;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ value, num }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
   return (
     <FramerWrapper
-      className="max-w-[32%] max-lg:max-w-full"
+      className={cn("w-full", featured && "lg:col-span-2")}
       y={0}
       scale={0.8}
-      delay={num/4}
+      delay={num / 4}
       duration={0.15}
     >
-      <Card className="w-full h-full flex flex-col hover:shadow-lg transition-all duration-300 border-2">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-xl font-bold text-primary">{value.title}</CardTitle>
+      <Card
+        className={cn(
+          "w-full h-full flex flex-col hover:shadow-lg transition-all duration-300 border-2",
+          featured && "lg:flex-row lg:items-center"
+        )}
+      >
+        <CardHeader className={cn("pb-2", featured && "lg:w-1/2 lg:pb-2 lg:pl-6")}>
+          <CardTitle className="text-xl font-bold text-primary">
+            {value.title}
+          </CardTitle>
         </CardHeader>
 
-        <CardContent className="flex-grow flex flex-col gap-4">
-          <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
+        <CardContent
+          className={cn(
+            "flex-grow flex flex-col gap-4",
+            featured && "lg:w-1/2 lg:pr-6"
+          )}
+        >
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {value.description}
+          </p>
 
           <div className="flex flex-wrap gap-2">
             {value.tags.map((tag: string, index: number) => (
@@ -50,7 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num }) => {
           </div>
         </CardContent>
 
-        <CardFooter className="pt-2 ">
+        <CardFooter className={cn("pt-2", featured && "lg:justify-end lg:pr-6")}>
           <Link
             href={value.link}
             target="_blank"
@@ -58,7 +73,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num }) => {
             className={cn(
               buttonVariants({
                 variant: "default",
-                size: "sm"
+                size: "sm",
               }),
               "w-fit transition-all hover:translate-y-[-2px] hover:shadow-md group"
             )}
