@@ -32,10 +32,10 @@ const page = () => {
         <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 auto-rows-[200px] sm:auto-rows-[240px]">
           <div className="sm:col-span-2 sm:row-span-2 relative overflow-hidden rounded-xl">
             <Image
-              src={richie1}
-              alt="Richard Karoki at work"
+              src={robo}
+              alt="Robot companion"
               fill
-              className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
+              className="object-cover rounded-xl"
               sizes="(max-width: 640px) 100vw, 66vw"
               priority
             />
@@ -51,10 +51,10 @@ const page = () => {
           </div>
           <div className="relative overflow-hidden rounded-xl">
             <Image
-              src={robo}
-              alt="Robot companion"
+              src={richie1}
+              alt="Richard Karoki at work"
               fill
-              className="object-cover rounded-xl"
+              className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
               sizes="(max-width: 640px) 100vw, 33vw"
             />
           </div>
