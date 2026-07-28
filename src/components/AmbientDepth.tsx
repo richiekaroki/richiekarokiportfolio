@@ -7,10 +7,7 @@ import * as THREE from "three";
 function FloatingShapes() {
   const groupRef = useRef<THREE.Group>(null!);
   const mouse = useRef({ x: 0, y: 0 });
-
-  const shapes = useRef<
-    { mesh: THREE.Mesh; speed: number }[]
-  >([]);
+  const shapes = useRef<{ mesh: THREE.Mesh; speed: number }[]>([]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -30,13 +27,14 @@ function FloatingShapes() {
   ];
 
   if (shapes.current.length === 0) {
+    const colors = [0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706];
     for (let i = 0; i < 9; i++) {
       const geo = geos[i % geos.length];
       const mat = new THREE.MeshBasicMaterial({
-        color: 0x57534e,
+        color: colors[i],
         wireframe: true,
         transparent: true,
-        opacity: 0.3,
+        opacity: 0.35,
       });
       const mesh = new THREE.Mesh(geo, mat);
       mesh.position.set(
@@ -51,16 +49,12 @@ function FloatingShapes() {
 
   useFrame(() => {
     if (!groupRef.current) return;
-
     shapes.current.forEach((s) => {
       s.mesh.rotation.x += s.speed;
       s.mesh.rotation.y += s.speed * 0.8;
     });
-
-    groupRef.current.position.x +=
-      (mouse.current.x * 1.2 - groupRef.current.position.x) * 0.02;
-    groupRef.current.position.y +=
-      (-mouse.current.y * 0.8 - groupRef.current.position.y) * 0.02;
+    groupRef.current.position.x += (mouse.current.x * 1.2 - groupRef.current.position.x) * 0.02;
+    groupRef.current.position.y += (-mouse.current.y * 0.8 - groupRef.current.position.y) * 0.02;
   });
 
   return (
@@ -73,20 +67,19 @@ function FloatingShapes() {
 }
 
 export default function AmbientDepth() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
+    setMounted(true);
   }, []);
-
-  if (prefersReducedMotion) return null;
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 10], fov: 55 }}>
-        <FloatingShapes />
-      </Canvas>
+      {mounted && (
+        <Canvas camera={{ position: [0, 0, 10], fov: 55 }} style={{ background: "transparent" }}>
+          <FloatingShapes />
+        </Canvas>
+      )}
     </div>
   );
 }
