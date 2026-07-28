@@ -30,7 +30,7 @@ const ContactForm = () => {
         <CardHeader>
           <CardTitle className="icon_underline">Send me a message</CardTitle>
           <CardDescription>
-            Your message will be sent and you&apos;ll be redirected to the homepage.
+            I&apos;ll get back to you within 24 hours.
           </CardDescription>
         </CardHeader>
         <CardContent>

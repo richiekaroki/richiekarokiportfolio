@@ -1,14 +1,13 @@
+"use client";
+
 import FramerWrapper from "@/components/animation/FramerWrapper";
+import dynamic from "next/dynamic";
+const AmbientDepth = dynamic(() => import("@/components/AmbientDepth"), { ssr: false });
 import { Circle, Heart, Globe2, Languages, Dna } from "lucide-react";
 import Image from "next/image";
 import richie1 from "@/assets/user-richie.jpg";
 import richie2 from "@/assets/user-richie2.jpg";
 import robo from "@/assets/robo-image.jpg";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "About",
-};
 
 const page = () => {
   const items = [
@@ -20,7 +19,9 @@ const page = () => {
   ];
 
   return (
-    <div className="h-full w-full relative flex flex-col items-start gap-10 overflow-hidden">
+    <div className="min-h-screen w-full relative flex flex-col items-start gap-10 overflow-hidden">
+      <AmbientDepth />
+      <div className="relative z-10 w-full flex flex-col items-start gap-10">
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
           Software Engineer<br />Based In Kenya.
@@ -125,6 +126,32 @@ const page = () => {
         </div>
       </FramerWrapper>
 
+      <FramerWrapper className="w-full" y={50} delay={0.38}>
+        <h2 className="gap-2 text-2xl sm:text-3xl font-source-serif text-primary font-semibold flex items-center">
+          Writing
+        </h2>
+        <div className="w-full h-fit mt-4 flex flex-col sm:flex-row flex-wrap gap-4">
+          <a
+            href="https://dev.to/richiekaroki"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary-sky transition-colors"
+          >
+            <Circle className="h-3 w-3 flex-shrink-0 text-primary-sky" />
+            Dev.to Blog
+          </a>
+          <a
+            href="https://hashnode.com/@richiekaroki"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary-sky transition-colors"
+          >
+            <Circle className="h-3 w-3 flex-shrink-0 text-primary-sky" />
+            Hashnode Blog
+          </a>
+        </div>
+      </FramerWrapper>
+
       <FramerWrapper className="w-full" y={50} delay={0.4}>
         <h2 className="gap-2 text-2xl sm:text-3xl font-source-serif text-primary font-semibold flex items-center">
           <Heart className="h-6 w-6 sm:h-7 sm:w-7" /> Hobbies
@@ -140,7 +167,7 @@ const page = () => {
           ))}
         </div>
       </FramerWrapper>
-
+      </div>
     </div>
   );
 };

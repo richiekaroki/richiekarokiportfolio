@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const educationPage = () => {
   return (
-    <div className="h-full w-full relative flex flex-col items-start gap-8 overflow-hidden">
+    <div className="min-h-screen w-full relative flex flex-col items-start gap-8 overflow-hidden">
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
           Education
@@ -23,7 +23,7 @@ const educationPage = () => {
             delay={0.2}
             className="sm:w-1/4 font-source-serif flex sm:items-start sm:justify-start text-base sm:text-lg text-muted-foreground"
           >
-            2017 — 2023
+            2017 to 2023
           </FramerWrapper>
           <FramerWrapper
             y={0}

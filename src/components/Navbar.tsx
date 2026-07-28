@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 
 
 import {
+  Briefcase,
+  BookOpen,
   FolderGit2,
   GraduationCap,
   HomeIcon,
@@ -35,18 +37,18 @@ const Navbar = () => {
       href: '/about',
     },
     {
-      title: 'Skills',
+      title: 'Consulting',
       icon: (
-        <LightbulbIcon className='h-full w-full ' />
+        <Briefcase className='h-full w-full ' />
       ),
-      href: '/skills',
+      href: '/consulting',
     },
     {
-      title: 'Education',
+      title: 'Tutoring',
       icon: (
-        <GraduationCap className='h-full w-full ' />
+        <BookOpen className='h-full w-full ' />
       ),
-      href: '/education',
+      href: '/tutoring',
     },
     {
       title: 'Projects',

@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import FramerWrapper from "./animation/FramerWrapper";
 import { ArrowUpRight } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 
 interface ProjectCardProps {
   value: {
@@ -17,6 +18,7 @@ interface ProjectCardProps {
     description: string;
     tags: string[];
     link: string;
+    repo?: string;
   };
   num: number;
   featured?: boolean;
@@ -65,7 +67,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
           </div>
         </CardContent>
 
-        <CardFooter className={cn("pt-2", featured && "lg:justify-end lg:pr-6")}>
+        <CardFooter className={cn("pt-2 gap-2", featured && "lg:justify-end lg:pr-6")}>
+          {value.repo && (
+            <Link
+              href={value.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({
+                  variant: "outline",
+                  size: "sm",
+                }),
+                "w-fit transition-all hover:translate-y-[-2px] hover:shadow-md group"
+              )}
+            >
+              <SiGithub className="h-4 w-4 mr-1" />
+              Source
+            </Link>
+          )}
           <Link
             href={value.link}
             target="_blank"

@@ -16,6 +16,7 @@ export default function ProjectsPage() {
         "Production grade Job Applications API built with NestJS, TypeScript, PostgreSQL and Redis. Features JWT auth with refresh token rotation, 4 role RBAC, webhook delivery with HMAC SHA256 signing, rate limiting, and full Swagger documentation.",
       tags: ["NestJS", "TypeScript", "PostgreSQL", "Redis", "JWT"],
       link: "https://job-application-api-production.up.railway.app/api/v1/docs",
+      repo: "https://github.com/richiekaroki/job-application-api",
     },
     {
       title: "Broadcast Hub",
@@ -23,6 +24,7 @@ export default function ProjectsPage() {
         "Media and Broadcast Content Management Platform built with NestJS and React. Full stack solution for managing broadcast content workflows with a modern TypeScript stack.",
       tags: ["NestJS", "React", "TypeScript", "Full Stack"],
       link: "https://broadcast-hub-web.vercel.app/",
+      repo: "https://github.com/richiekaroki/broadcast-hub",
     },
     {
       title: "Actserv Onboarding Platform",
@@ -61,6 +63,7 @@ export default function ProjectsPage() {
         "A court case management application built with TypeScript. Tracks and organizes legal case data with a clean, functional interface.",
       tags: ["TypeScript", "React", "Legal Tech"],
       link: "https://github.com/richiekaroki/court-case-app",
+      repo: "https://github.com/richiekaroki/court-case-app",
     },
     {
       title: "Livestock Demo",
@@ -68,13 +71,14 @@ export default function ProjectsPage() {
         "A livestock management demo application built with TypeScript. Demonstrates full stack capabilities with a focus on data modeling and UI.",
       tags: ["TypeScript", "Full Stack", "Agritech"],
       link: "https://github.com/richiekaroki/livestock-demo",
+      repo: "https://github.com/richiekaroki/livestock-demo",
     },
   ];
 
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <div className="h-full w-full relative flex flex-col items-start gap-8 overflow-hidden">
+    <div className="min-h-screen w-full relative flex flex-col items-start gap-8 overflow-hidden">
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
           Projects
@@ -86,7 +90,7 @@ export default function ProjectsPage() {
         <div className="relative w-full aspect-video max-h-[280px] rounded-lg overflow-hidden">
           <Image
             src={work1}
-            alt="Richard Karoki - Work"
+            alt="Richard Karoki, Work"
             fill
             priority
             className="object-cover"

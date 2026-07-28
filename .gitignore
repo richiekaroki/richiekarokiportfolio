@@ -80,7 +80,10 @@ opencode.json
 out/
 .vercel
 
-.vercel
-
-.vercel
-.env*
+# ==================== SCREENSHOTS (testing artifacts) ====================
+*.png
+*.jpeg
+*.jpg
+!public/*.jpg
+!src/assets/*.jpg
+!src/assets/*.png

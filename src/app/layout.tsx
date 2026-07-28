@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://richiekaroki.vercel.app"),
   title: {
     default: siteConfig.name,
-    template: `%s - Software Engineer`,
+    template: `%s | Software Engineer | FullStack Developer | AI Engineer and Enthusiast`,
   },
   description: siteConfig.description,
 
@@ -93,7 +93,7 @@ export default function RootLayout({
       <body className={`${sourceSerif.variable} ${inter.variable} font-inter`}>
         <main
           className={cn(
-            "flex relative break-words min-h-screen items-center justify-between pt-14 pb-4 px-5 md:px-10 lg:px-20 xl:px-40 max-sm:pt-20 overflow-x-hidden"
+            "flex relative break-words min-h-screen items-start justify-between pt-14 pb-8 px-5 md:px-10 lg:px-20 xl:px-40 max-sm:pt-20 overflow-x-hidden"
           )}
         >
           {/* NAVBAR ->  */}

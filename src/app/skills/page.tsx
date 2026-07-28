@@ -1,4 +1,5 @@
 import SkillGrid from "@/components/SkillGrid";
+import NodeGraphWrapper from "@/components/NodeGraphWrapper";
 import FramerWrapper from "@/components/animation/FramerWrapper";
 import type { Metadata } from "next";
 import {
@@ -61,7 +62,7 @@ const skillPage = () => {
   ];
 
   return (
-    <div className="h-full w-full relative flex flex-col items-start gap-8 overflow-hidden">
+    <div className="min-h-screen w-full relative flex flex-col items-start gap-8 overflow-hidden">
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
           My Technical<br />Experience & Skills.
@@ -76,6 +77,11 @@ const skillPage = () => {
           specialize in building web applications and sites using Javascript,
           Typescript, React, Nextjs & Node.
         </p>
+      </FramerWrapper>
+
+      {/* Interactive Tech Stack Node Graph */}
+      <FramerWrapper y={50} delay={0.15} className="w-full">
+        <NodeGraphWrapper />
       </FramerWrapper>
 
       <FramerWrapper className="w-full" y={50} delay={0.2}>
