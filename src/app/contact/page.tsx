@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import PulseWaveBackground from "@/components/PulseWaveBackground";
 import FramerWrapper from "@/components/animation/FramerWrapper";
 import { Mail, Phone } from "lucide-react";
 import { SiGithub } from "react-icons/si";
@@ -35,6 +36,7 @@ const contactPage = () => {
 
   return (
     <div className="min-h-screen w-full relative flex flex-col items-start gap-8 overflow-hidden">
+      <PulseWaveBackground />
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
           Get In Touch

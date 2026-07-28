@@ -1,6 +1,7 @@
 "use client";
 
 import FramerWrapper from "@/components/animation/FramerWrapper";
+import HoloGridBackground from "@/components/HoloGridBackground";
 import ProjectCard from "@/components/ProjectCard";
 import Image from "next/image";
 import work1 from "@/assets/work-1.png";
@@ -79,6 +80,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen w-full relative flex flex-col items-start gap-8 overflow-hidden">
+      <HoloGridBackground />
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
           Projects
