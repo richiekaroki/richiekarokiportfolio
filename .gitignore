@@ -74,6 +74,8 @@ temp/
 .playwright-mcp/
 skills-lock.json
 opencode.json
+DESIGN.md
+PRODUCT.md
 
 # ==================== NEXT.JS ====================
 .next/
