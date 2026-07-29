@@ -81,8 +81,6 @@ export default function Home() {
               <HeroContent />
               <div className="mt-8 flex items-center gap-4">
                 <SocialLinks />
-              </div>
-              <div className="mt-8">
                 <Link href="/Richie-software-engineer.pdf" download>
                   <ScrambleButton label="Download Resume" />
                 </Link>

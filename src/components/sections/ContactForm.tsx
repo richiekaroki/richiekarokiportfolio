@@ -13,10 +13,18 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTransition, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { SendEmail } from "@/actions/send-email";
 import { CheckCircle, AlertCircle } from "lucide-react";
 
+const placeholders: Record<string, string> = {
+  consulting: "Tell me about your project, timeline, and what you need built...",
+  tutoring: "What topics are you interested in learning? Any prior experience?",
+};
+
 const ContactForm = () => {
+  const searchParams = useSearchParams();
+  const inquiryType = searchParams.get("type") === "tutoring" ? "tutoring" : "consulting";
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -43,7 +51,9 @@ const ContactForm = () => {
         <CardHeader>
           <CardTitle className="icon_underline">Send me a message</CardTitle>
           <CardDescription>
-            I&apos;ll get back to you within 24 hours.
+            {inquiryType === "tutoring"
+              ? "Tell me what you want to learn. I'll get back to you within 24 hours."
+              : "Tell me about your project. I'll get back to you within 24 hours."}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -87,7 +97,7 @@ const ContactForm = () => {
             <Label htmlFor="message">Message <span className="text-destructive" aria-hidden="true">*</span></Label>
             <textarea
               id="message"
-              placeholder="Your message here..."
+              placeholder={placeholders[inquiryType]}
               name="message"
               required
               aria-required="true"

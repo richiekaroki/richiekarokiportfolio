@@ -11,7 +11,7 @@ const paths = [
     icon: <Briefcase className="h-6 w-6" />,
     description:
       "Need a web app built, an API integrated, or your infrastructure sorted? I take on freelance and contract work for full-stack builds, MVPs, network setup, and code audits.",
-    href: "/contact",
+    href: "/contact?type=consulting",
     cta: "Get in Touch",
   },
   {
@@ -19,7 +19,7 @@ const paths = [
     icon: <BookOpen className="h-6 w-6" />,
     description:
       "Learning to code or stuck on fundamentals? I tutor programming basics 1:1. Practical, project-based, beginner-friendly.",
-    href: "/contact",
+    href: "/contact?type=tutoring",
     cta: "Get in Touch",
   },
 ];

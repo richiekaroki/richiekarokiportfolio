@@ -65,7 +65,7 @@ function FloatingGeoScene() {
       { position: [3, -1, -3], rotation: [1, 0.5, 0.2], speed: 0.3, color: "#3b82f6", shape: "octahedron" },
       { position: [-1.5, -1.5, -2.5], rotation: [0.2, 0.8, 0.5], speed: 0.5, color: "#d97706", shape: "tetrahedron" },
       { position: [2, 2, -4], rotation: [0.7, 0.1, 0.3], speed: 0.25, color: "#3b82f6", shape: "torus" },
-      { position: [-2.5, 0, -3.5], rotation: [0.3, 0.6, 0.1], speed: 0.35, color: "#6366f1", shape: "box" },
+      { position: [-2.5, 0, -3.5], rotation: [0.3, 0.6, 0.1], speed: 0.35, color: "#3b82f6", shape: "box" },
       { position: [1, -2, -2], rotation: [0.9, 0.4, 0.6], speed: 0.45, color: "#d97706", shape: "octahedron" },
       { position: [0, 2.5, -5], rotation: [0.1, 0.9, 0.4], speed: 0.2, color: "#3b82f6", shape: "tetrahedron" },
     ],
