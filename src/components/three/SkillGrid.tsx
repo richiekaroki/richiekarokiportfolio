@@ -15,7 +15,7 @@ const SkillGrid: React.FC<SkillGridProps> = ({ items }) => {
       {items.map((item, index) => (
         <div
           key={index}
-          className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg hover:bg-accent transition-colors"
+          className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-secondary/50 hover:bg-accent transition-colors"
         >
           <div className="w-12 h-12 flex items-center justify-center text-4xl">
             {item.icon}

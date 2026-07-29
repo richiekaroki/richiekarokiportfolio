@@ -3,7 +3,7 @@ import {  Source_Serif_4, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/layout/Navbar";
 import { siteConfig } from "@/lib/config";
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -22,32 +22,21 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://richiekaroki.vercel.app"),
   title: {
     default: siteConfig.name,
-    template: `%s | Software Engineer | FullStack Developer | AI Engineer and Enthusiast`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
 
   keywords: [
-    "richard",
-    "karoki",
-    "Richard",
-    "Karoki",
-    "RICHARD",
-    "KAROKI",
     "Richard Karoki",
-    "richard karoki",
     "richiekaroki",
     "portfolio",
     "web developer",
-    "web",
-    "web dev",
-    "developer",
-    "PROGRAMMER",
-    "programmer",
-    "RICHARD KAROKI",
-    "website",
-    "richard developer",
     "software engineer",
     "full stack developer",
+    "TypeScript",
+    "React",
+    "NestJS",
+    "Kenya",
   ],
   authors: [
     {
@@ -91,7 +80,14 @@ export default function RootLayout({
         />
       </head>
       <body className={`${sourceSerif.variable} ${inter.variable} font-inter`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:outline-none focus:ring-2 focus:ring-primary-sky"
+        >
+          Skip to content
+        </a>
         <main
+          id="main-content"
           className={cn(
             "flex relative break-words min-h-screen items-start justify-between pt-14 pb-8 px-5 md:px-10 lg:px-20 xl:px-40 max-sm:pt-20 overflow-x-hidden"
           )}

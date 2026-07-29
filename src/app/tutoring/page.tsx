@@ -1,7 +1,7 @@
 import FramerWrapper from "@/components/animation/FramerWrapper";
-import ThreeBackground from "@/components/ConstellationBackground";
+import ThreeBackground from "@/components/backgrounds/ConstellationBackground";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Users, Calendar, Award, ArrowRight } from "lucide-react";
+import { BookOpen, Users, Award, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import type { Metadata } from "next";

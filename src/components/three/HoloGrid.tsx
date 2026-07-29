@@ -6,6 +6,7 @@ import * as THREE from "three";
 
 function Grid() {
   const ref = useRef<THREE.Group>(null!);
+  const frameCount = useRef(0);
 
   const lines = useMemo(() => {
     const positions: number[] = [];
@@ -22,6 +23,8 @@ function Grid() {
   }, []);
 
   useFrame(() => {
+    frameCount.current++;
+    if (frameCount.current % 2 !== 0) return;
     ref.current.rotation.x = Math.PI / 3 + Math.sin(Date.now() * 0.0003) * 0.05;
     ref.current.rotation.z += 0.001;
   });
@@ -40,6 +43,7 @@ function Grid() {
 
 function FloatingDots() {
   const ref = useRef<THREE.Points>(null!);
+  const frameCount = useRef(0);
   const count = 80;
 
   const positions = useMemo(() => {
@@ -53,6 +57,8 @@ function FloatingDots() {
   }, []);
 
   useFrame(() => {
+    frameCount.current++;
+    if (frameCount.current % 2 !== 0) return;
     ref.current.rotation.y += 0.0004;
   });
 
@@ -68,7 +74,7 @@ function FloatingDots() {
 
 function HoloGridScene() {
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
+    <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 1.5]}>
       <Grid />
       <FloatingDots />
     </Canvas>

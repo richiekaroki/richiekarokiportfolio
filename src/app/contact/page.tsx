@@ -1,5 +1,5 @@
-import ContactForm from "@/components/ContactForm";
-import PulseWaveBackground from "@/components/PulseWaveBackground";
+import ContactForm from "@/components/sections/ContactForm";
+import PulseWaveBackground from "@/components/backgrounds/PulseWaveBackground";
 import FramerWrapper from "@/components/animation/FramerWrapper";
 import { Mail, Phone } from "lucide-react";
 import { SiGithub } from "react-icons/si";
@@ -63,7 +63,7 @@ const contactPage = () => {
                   rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className={cn(
                     buttonVariants({ variant: "outline" }),
-                    "justify-start gap-3 h-auto py-3 px-4"
+                    "justify-start gap-3 h-auto py-3 px-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-sky focus-visible:ring-offset-2"
                   )}
                 >
                   <span className="text-primary-sky">{method.icon}</span>

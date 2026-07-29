@@ -152,11 +152,10 @@ function DockItem({ children, className }: DockItemProps) {
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
       className={cn(
-        'relative inline-flex items-center justify-center',
+        'relative inline-flex items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-sky focus-visible:ring-offset-2 focus-visible:ring-offset-background',
         className
       )}
       tabIndex={0}
-      role='button'
     >
       {Children.map(children, (child) =>
         cloneElement(child as React.ReactElement<Record<string, unknown>>, { width, isHovered } as Record<string, unknown>)

@@ -1,7 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
-import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export const SendEmail = async (formdata: FormData) => {
   const message = formdata.get("message");
@@ -28,9 +28,10 @@ export const SendEmail = async (formdata: FormData) => {
       replyTo: SenderEmail,
       text: `sender email: ${SenderEmail}\n\n${message}`,
     });
-  } catch (err) {
+  } catch {
     return { error: "Failed to send email. Please try again." };
   }
 
-  return redirect("/");
+  revalidatePath("/");
+  return { success: true };
 };

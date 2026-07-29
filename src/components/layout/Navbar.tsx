@@ -3,12 +3,7 @@ import { cn } from "@/lib/utils";
 
 
 import {
-  Briefcase,
-  BookOpen,
-  FolderGit2,
-  GraduationCap,
   HomeIcon,
-  LightbulbIcon,
   Mail,
   User,
 } from 'lucide-react';
@@ -37,27 +32,6 @@ const Navbar = () => {
       href: '/about',
     },
     {
-      title: 'Consulting',
-      icon: (
-        <Briefcase className='h-full w-full ' />
-      ),
-      href: '/consulting',
-    },
-    {
-      title: 'Tutoring',
-      icon: (
-        <BookOpen className='h-full w-full ' />
-      ),
-      href: '/tutoring',
-    },
-    {
-      title: 'Projects',
-      icon: (
-        <FolderGit2 className='h-full w-full ' />
-      ),
-      href: '/projects',
-    },
-    {
       title: 'Contact',
       icon: (
         <Mail className='h-full w-full ' />
@@ -69,14 +43,13 @@ const Navbar = () => {
 
   return (
 
-    <div className="fixed top-5 right-0 left-0 px-3 sm:px-5 m-auto w-full sm:w-fit flex items-center justify-between bg-transparent z-50">
+    <nav className="fixed top-5 right-0 left-0 px-3 sm:px-5 m-auto w-full sm:w-fit flex items-center justify-between bg-transparent z-50" aria-label="Main navigation">
     <Dock className='items-end pb-3 rounded-full'>
       {data.map((item, idx) => (
-        <Link href={item.href} key={idx}>
+        <Link href={item.href} key={idx} aria-label={item.title}>
 
         <DockItem
           className={cn("aspect-square rounded-full bg-secondary",pathname === item.href && " bg-accent border border-primary-sky")}
-          aria-label={item.title}
           >
           <DockLabel >{item.title}</DockLabel>
           <DockIcon className={cn(pathname === item.href && "text-primary-sky")}>{item.icon}</DockIcon>
@@ -85,7 +58,7 @@ const Navbar = () => {
       ))}
     </Dock>
     <ThemeToggle />
-    </div>
+    </nav>
   );
 };
 

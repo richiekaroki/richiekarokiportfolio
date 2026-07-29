@@ -18,9 +18,9 @@ function GeoShape({
   shape: "box" | "octahedron" | "tetrahedron" | "torus";
 }) {
   const ref = useRef<THREE.Mesh>(null!);
-  const initialRotation = useMemo(() => rotation, []);
+  const initialRotation = useMemo(() => rotation, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useFrame((_, delta) => {
+  useFrame(() => {
     ref.current.rotation.x = initialRotation[0] + Math.sin(Date.now() * speed * 0.001) * 0.3;
     ref.current.rotation.y = initialRotation[1] + Date.now() * speed * 0.0005;
     ref.current.position.y = position[1] + Math.sin(Date.now() * speed * 0.0008) * 0.15;

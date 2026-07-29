@@ -6,8 +6,11 @@ import * as THREE from "three";
 
 function PulseRing({ delay, color }: { delay: number; color: string }) {
   const ref = useRef<THREE.Mesh>(null!);
+  const frameCount = useRef(0);
 
   useFrame(() => {
+    frameCount.current++;
+    if (frameCount.current % 2 !== 0) return;
     const t = ((Date.now() * 0.001 + delay) % 4) / 4;
     ref.current.scale.setScalar(t * 3);
     (ref.current.material as THREE.MeshBasicMaterial).opacity = (1 - t) * 0.25;
@@ -33,7 +36,7 @@ function PulseWaveScene() {
   );
 
   return (
-    <Canvas camera={{ position: [0, 2, 6], fov: 50 }}>
+    <Canvas camera={{ position: [0, 2, 6], fov: 50 }} dpr={[1, 1.5]}>
       {rings.map((r, i) => (
         <PulseRing key={i} {...r} />
       ))}

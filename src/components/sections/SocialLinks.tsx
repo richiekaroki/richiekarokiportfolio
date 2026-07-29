@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { SiGithub } from "react-icons/si";
-import { buttonVariants } from "./ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import FramerWrapper from "./animation/FramerWrapper";
+import FramerWrapper from "@/components/animation/FramerWrapper";
 import { type ComponentType } from "react";
 
 interface SocialLink {

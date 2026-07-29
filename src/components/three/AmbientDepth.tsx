@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -8,6 +8,7 @@ function FloatingShapes() {
   const groupRef = useRef<THREE.Group>(null!);
   const mouse = useRef({ x: 0, y: 0 });
   const shapes = useRef<{ mesh: THREE.Mesh; speed: number }[]>([]);
+  const frameCount = useRef(0);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -18,13 +19,13 @@ function FloatingShapes() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const geos = [
+  const geos = useMemo(() => [
     new THREE.IcosahedronGeometry(0.9, 0),
     new THREE.OctahedronGeometry(0.7, 0),
     new THREE.TorusGeometry(0.6, 0.18, 8, 24),
     new THREE.TetrahedronGeometry(0.8, 0),
     new THREE.IcosahedronGeometry(0.5, 0),
-  ];
+  ], []);
 
   if (shapes.current.length === 0) {
     const colors = [0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706];
@@ -48,6 +49,8 @@ function FloatingShapes() {
   }
 
   useFrame(() => {
+    frameCount.current++;
+    if (frameCount.current % 2 !== 0) return;
     if (!groupRef.current) return;
     shapes.current.forEach((s) => {
       s.mesh.rotation.x += s.speed;
@@ -76,7 +79,7 @@ export default function AmbientDepth() {
   return (
     <div className="absolute inset-0 z-0 pointer-events-none">
       {mounted && (
-        <Canvas camera={{ position: [0, 0, 10], fov: 55 }} style={{ background: "transparent" }}>
+        <Canvas camera={{ position: [0, 0, 10], fov: 55 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
           <FloatingShapes />
         </Canvas>
       )}

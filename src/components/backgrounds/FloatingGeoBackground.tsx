@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const FloatingGeo = dynamic(() => import("@/components/FloatingGeo"), { ssr: false });
+const FloatingGeo = dynamic(() => import("@/components/three/FloatingGeo"), { ssr: false });
 
 export default function FloatingGeoBackground() {
   return (

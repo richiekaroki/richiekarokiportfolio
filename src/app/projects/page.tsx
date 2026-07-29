@@ -1,8 +1,8 @@
 "use client";
 
 import FramerWrapper from "@/components/animation/FramerWrapper";
-import HoloGridBackground from "@/components/HoloGridBackground";
-import ProjectCard from "@/components/ProjectCard";
+import HoloGridBackground from "@/components/backgrounds/HoloGridBackground";
+import ProjectCard from "@/components/sections/ProjectCard";
 import Image from "next/image";
 import work1 from "@/assets/work-1.png";
 import { useState } from "react";

@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const HoloGrid = dynamic(() => import("@/components/HoloGrid"), { ssr: false });
+const HoloGrid = dynamic(() => import("@/components/three/HoloGrid"), { ssr: false });
 
 export default function HoloGridBackground() {
   return (

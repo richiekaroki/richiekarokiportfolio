@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import FramerWrapper from "./animation/FramerWrapper";
+import FramerWrapper from "@/components/animation/FramerWrapper";
 import { ArrowUpRight } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 

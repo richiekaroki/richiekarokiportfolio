@@ -1,5 +1,5 @@
-import SkillGrid from "@/components/SkillGrid";
-import NodeGraphWrapper from "@/components/NodeGraphWrapper";
+import SkillGrid from "@/components/three/SkillGrid";
+import NodeGraphWrapper from "@/components/three/NodeGraphWrapper";
 import FramerWrapper from "@/components/animation/FramerWrapper";
 import type { Metadata } from "next";
 import {
@@ -86,21 +86,21 @@ const skillPage = () => {
 
       <FramerWrapper className="w-full" y={50} delay={0.2}>
         <h2 className="text-lg font-source-serif text-primary font-semibold mb-4">Languages</h2>
-        <div className="w-full grid grid-cols-7 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2 gap-4">
+        <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-4">
           <SkillGrid items={programmingLanguages} />
         </div>
       </FramerWrapper>
 
       <FramerWrapper className="w-full" y={50} delay={0.25}>
         <h2 className="text-lg font-source-serif text-primary font-semibold mb-4">Frameworks & Libraries</h2>
-        <div className="w-full grid grid-cols-7 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2 gap-4">
+        <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-4">
           <SkillGrid items={frameworks} />
         </div>
       </FramerWrapper>
 
       <FramerWrapper className="w-full" y={50} delay={0.3}>
         <h2 className="text-lg font-source-serif text-primary font-semibold mb-4">Tools & Technologies</h2>
-        <div className="w-full grid grid-cols-7 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2 gap-4">
+        <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-4">
           <SkillGrid items={tools} />
         </div>
       </FramerWrapper>

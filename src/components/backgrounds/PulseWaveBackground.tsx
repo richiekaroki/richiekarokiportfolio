@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const PulseWave = dynamic(() => import("@/components/PulseWave"), { ssr: false });
+const PulseWave = dynamic(() => import("@/components/three/PulseWave"), { ssr: false });
 
 export default function PulseWaveBackground() {
   return (

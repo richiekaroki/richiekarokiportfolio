@@ -19,8 +19,11 @@ function generateStars(count: number) {
 
 function Stars({ positions }: { positions: Float32Array }) {
   const ref = useRef<THREE.Points>(null!);
+  const frameCount = useRef(0);
 
   useFrame(() => {
+    frameCount.current++;
+    if (frameCount.current % 2 !== 0) return;
     ref.current.rotation.y += 0.0003;
     ref.current.rotation.x += 0.0001;
   });
@@ -46,6 +49,7 @@ function Stars({ positions }: { positions: Float32Array }) {
 
 function Connections({ positions }: { positions: Float32Array }) {
   const ref = useRef<THREE.LineSegments>(null!);
+  const frameCount = useRef(0);
   const posArray = useMemo(() => {
     const lines: number[] = [];
     const count = positions.length / 3;
@@ -67,6 +71,8 @@ function Connections({ positions }: { positions: Float32Array }) {
   }, [positions]);
 
   useFrame(() => {
+    frameCount.current++;
+    if (frameCount.current % 2 !== 0) return;
     ref.current.rotation.y += 0.0003;
     ref.current.rotation.x += 0.0001;
   });
@@ -92,7 +98,7 @@ function ConstellationScene() {
   const positions = useMemo(() => generateStars(STAR_COUNT), []);
 
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
+    <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 1.5]}>
       <Stars positions={positions} />
       <Connections positions={positions} />
     </Canvas>

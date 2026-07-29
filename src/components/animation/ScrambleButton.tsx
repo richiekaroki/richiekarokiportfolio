@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 
 const ScrambleButton = ({ label }: { label: string }) => {
   const [displayText, setDisplayText] = useState(label);
-  const charset = "abcdefghijklmnopqrstuvwxyz";
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   const randomChars = (length: number) => {
     return Array.from(

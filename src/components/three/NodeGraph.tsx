@@ -134,7 +134,7 @@ function Tooltip({ hovered }: { hovered: number | null }) {
 }
 
 export default function NodeGraph() {
-  const [hovered, setHovered] = useState<number | null>(null);
+  const [hovered] = useState<number | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {

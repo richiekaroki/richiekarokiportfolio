@@ -68,7 +68,7 @@ export default function ParticleHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [morphed, setMorphed] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [count] = useState(() => (typeof window !== "undefined" && window.innerWidth < 768) ? 900 : 2200);
+  const [count] = useState(() => (typeof window !== "undefined" && window.innerWidth < 768) ? 400 : 2200);
 
   useEffect(() => {
     setMounted(true);
@@ -89,7 +89,7 @@ export default function ParticleHero() {
   return (
     <div ref={containerRef} style={{ position: "relative", width: "100%", height: "100%" }}>
       {mounted && (
-        <Canvas camera={{ position: [0, 0, 8], fov: 60 }} style={{ background: "transparent" }}>
+        <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
           <ParticleField morphed={morphed} count={count} />
         </Canvas>
       )}

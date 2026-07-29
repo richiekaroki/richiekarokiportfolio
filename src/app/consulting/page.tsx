@@ -1,5 +1,5 @@
 import FramerWrapper from "@/components/animation/FramerWrapper";
-import ThreeBackground from "@/components/FloatingGeoBackground";
+import ThreeBackground from "@/components/backgrounds/FloatingGeoBackground";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code, Plug, Rocket, Network, Search, ArrowRight } from "lucide-react";
 import Link from "next/link";
