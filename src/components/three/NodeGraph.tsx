@@ -159,7 +159,7 @@ export default function NodeGraph() {
         </div>
       ) : (
         <>
-          <Canvas camera={{ position: [0, 0, 9], fov: 60 }}>
+          <Canvas camera={{ position: [0, 0, 9], fov: 60 }} dpr={[1, 1.5]}>
             <Nodes />
           </Canvas>
           <Tooltip hovered={hovered} />

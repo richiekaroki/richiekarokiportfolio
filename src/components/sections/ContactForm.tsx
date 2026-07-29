@@ -22,7 +22,7 @@ const placeholders: Record<string, string> = {
   tutoring: "What topics are you interested in learning? Any prior experience?",
 };
 
-const ContactForm = () => {
+const ContactForm = ({ onTyping, onSubmitStart }: { onTyping?: (typing: boolean) => void; onSubmitStart?: () => void }) => {
   const searchParams = useSearchParams();
   const inquiryType = searchParams.get("type") === "tutoring" ? "tutoring" : "consulting";
   const [isPending, startTransition] = useTransition();
@@ -32,6 +32,7 @@ const ContactForm = () => {
   const handleSubmit = (formData: FormData) => {
     setError(null);
     setSuccess(false);
+    onSubmitStart?.();
     startTransition(async () => {
       const result = await SendEmail(formData);
       if (result && "error" in result) {
@@ -79,6 +80,8 @@ const ContactForm = () => {
               aria-required="true"
               autoComplete="name"
               placeholder="Your name"
+              onFocus={() => onTyping?.(true)}
+              onBlur={() => onTyping?.(false)}
             />
           </div>
           <div className="grid w-full items-center gap-1.5 mt-2">
@@ -91,6 +94,8 @@ const ContactForm = () => {
               aria-required="true"
               autoComplete="email"
               placeholder="you@example.com"
+              onFocus={() => onTyping?.(true)}
+              onBlur={() => onTyping?.(false)}
             />
           </div>
           <div className="grid w-full items-center gap-1.5 mt-2">
@@ -101,6 +106,8 @@ const ContactForm = () => {
               name="message"
               required
               aria-required="true"
+              onFocus={() => onTyping?.(true)}
+              onBlur={() => onTyping?.(false)}
               className="resize-none flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             ></textarea>
           </div>

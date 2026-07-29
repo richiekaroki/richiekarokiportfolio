@@ -104,7 +104,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen w-full relative flex flex-col overflow-hidden">
-      <AmbientDepth />
+      <AmbientDepth section={activeSection} />
 
       {/* Mobile nav (horizontal tabs) */}
       <div className="lg:hidden relative z-20">

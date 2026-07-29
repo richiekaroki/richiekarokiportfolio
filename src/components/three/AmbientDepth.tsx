@@ -1,14 +1,30 @@
 "use client";
 
 import { useRef, useEffect, useState, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
-function FloatingShapes() {
+function FloatingShapes({ section }: { section: string }) {
   const groupRef = useRef<THREE.Group>(null!);
   const mouse = useRef({ x: 0, y: 0 });
-  const shapes = useRef<{ mesh: THREE.Mesh; speed: number }[]>([]);
+  const shapes = useRef<{ mesh: THREE.Mesh; speed: number; baseOpacity: number; targetOpacity: number }[]>([]);
   const frameCount = useRef(0);
+  const sectionSpeed = useRef(1);
+  const { camera } = useThree();
+  const vec = useMemo(() => new THREE.Vector3(), []);
+
+  const speedMap: Record<string, number> = {
+    bio: 1,
+    "quick-facts": 1.1,
+    skills: 1.5,
+    education: 0.7,
+    certifications: 1,
+    writing: 0.9,
+  };
+
+  useEffect(() => {
+    sectionSpeed.current = speedMap[section] ?? 1;
+  }, [section]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -44,7 +60,7 @@ function FloatingShapes() {
         (Math.random() - 0.5) * 5 - 2
       );
       const speed = 0.001 + Math.random() * 0.002;
-      shapes.current.push({ mesh, speed });
+      shapes.current.push({ mesh, speed, baseOpacity: 0.35, targetOpacity: 0.35 });
     }
   }
 
@@ -52,9 +68,19 @@ function FloatingShapes() {
     frameCount.current++;
     if (frameCount.current % 2 !== 0) return;
     if (!groupRef.current) return;
+    const speed = sectionSpeed.current;
     shapes.current.forEach((s) => {
-      s.mesh.rotation.x += s.speed;
-      s.mesh.rotation.y += s.speed * 0.8;
+      s.mesh.rotation.x += s.speed * speed;
+      s.mesh.rotation.y += s.speed * 0.8 * speed;
+
+      vec.copy(s.mesh.position);
+      vec.project(camera);
+      const dx = vec.x - mouse.current.x;
+      const dy = vec.y - mouse.current.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      s.targetOpacity = dist < 0.3 ? 0.6 : s.baseOpacity;
+      const mat = s.mesh.material as THREE.MeshBasicMaterial;
+      mat.opacity += (s.targetOpacity - mat.opacity) * 0.08;
     });
     groupRef.current.position.x += (mouse.current.x * 1.2 - groupRef.current.position.x) * 0.02;
     groupRef.current.position.y += (-mouse.current.y * 0.8 - groupRef.current.position.y) * 0.02;
@@ -69,7 +95,7 @@ function FloatingShapes() {
   );
 }
 
-export default function AmbientDepth() {
+export default function AmbientDepth({ section = "bio" }: { section?: string }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -80,7 +106,7 @@ export default function AmbientDepth() {
     <div className="absolute inset-0 z-0 pointer-events-none">
       {mounted && (
         <Canvas camera={{ position: [0, 0, 10], fov: 55 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
-          <FloatingShapes />
+          <FloatingShapes section={section} />
         </Canvas>
       )}
     </div>

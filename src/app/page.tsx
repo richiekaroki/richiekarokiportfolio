@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import SocialLinks from "@/components/sections/SocialLinks";
 import HeroContent from "@/components/sections/HeroContent";
@@ -64,13 +65,15 @@ const services = [
 ];
 
 export default function Home() {
+  const hoveredCta = useRef<string | null>(null);
+
   return (
     <div className="w-full">
       {/* ── HERO SECTION ── */}
       <section className="relative w-full min-h-screen flex items-center">
         {/* Particle background */}
         <div className="absolute inset-0 z-0">
-          <ParticleHero />
+          <ParticleHero hoveredCta={hoveredCta} />
         </div>
 
         {/* Hero content */}
@@ -89,6 +92,14 @@ export default function Home() {
 
             {/* RIGHT — Image */}
             <FramerWrapper
+              className="flex lg:hidden flex-shrink-0"
+              y={0}
+              x={80}
+              delay={0.2}
+            >
+              <HeroImage />
+            </FramerWrapper>
+            <FramerWrapper
               className="hidden lg:flex flex-shrink-0"
               y={0}
               x={80}
@@ -98,16 +109,11 @@ export default function Home() {
             </FramerWrapper>
           </div>
         </div>
-
-        {/* Mobile image */}
-        <div className="block lg:hidden absolute bottom-10 left-1/2 -translate-x-1/2 z-10 pointer-events-none opacity-30">
-          <HeroImage />
-        </div>
       </section>
 
       {/* ── TWO-PATH SPLIT ── */}
       <section className="w-full py-16">
-        <TwoPathSplit />
+        <TwoPathSplit onHover={(cta) => { hoveredCta.current = cta; }} />
       </section>
 
       {/* ── PROJECTS ── */}
