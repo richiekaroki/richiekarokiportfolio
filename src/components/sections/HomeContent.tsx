@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
 import SocialLinks from "@/components/sections/SocialLinks";
 import HeroContent from "@/components/sections/HeroContent";
@@ -77,7 +76,7 @@ export default function HomeContent() {
         </div>
 
         {/* Hero content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-20 sm:pt-20">
           <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-12 lg:gap-20">
             {/* LEFT — Text */}
             <FramerWrapper className="flex-1 max-w-xl" y={0} x={-80}>

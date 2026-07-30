@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import RKLogo from "@/components/ui/RKLogo";
 
 const roles = [
   "Full Stack Developer",
@@ -23,6 +24,7 @@ const HeroContent = () => {
 
   return (
     <>
+      <RKLogo variant="mark" size="lg" className="mb-3" />
       <h1 className="font-source-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl name_underline text-primary leading-tight">
         Richard <br /> Karoki
       </h1>
