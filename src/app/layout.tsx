@@ -1,17 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import {  Source_Serif_4, Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
-import dynamic from "next/dynamic";
-
-const DeferredAnalytics = dynamic(
-  () => import("@vercel/analytics/react").then((m) => m.Analytics),
-  { ssr: false }
-);
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
 import PageTransition from "@/components/animation/PageTransition";
 import StructuredData from "@/components/seo/StructuredData";
+import DeferredAnalytics from "@/components/ui/DeferredAnalytics";
 import { siteConfig } from "@/lib/config";
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
