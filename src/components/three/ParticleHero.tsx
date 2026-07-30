@@ -7,62 +7,107 @@ import * as THREE from "three";
 function scatterPositions(n: number) {
   const arr = new Float32Array(n * 3);
   for (let i = 0; i < n; i++) {
-    arr[i * 3] = (Math.random() - 0.5) * 12;
-    arr[i * 3 + 1] = (Math.random() - 0.5) * 8;
-    arr[i * 3 + 2] = (Math.random() - 0.5) * 4;
+    arr[i * 3] = (Math.random() - 0.5) * 10;
+    arr[i * 3 + 1] = (Math.random() - 0.5) * 6;
+    arr[i * 3 + 2] = (Math.random() - 0.5) * 6;
   }
   return arr;
 }
 
-function ParticleField({ count }: { count: number }) {
-  const pointsRef = useRef<THREE.Points>(null!);
-  const speedRef = useRef(0.3 + Math.random() * 0.2);
+function screenPositions(n: number) {
+  const arr = new Float32Array(n * 3);
+  const w = 4.6, h = 2.8;
+  for (let i = 0; i < n; i++) {
+    const t = Math.random();
+    let x, y;
+    if (t < 0.25) { x = -w / 2 + Math.random() * w; y = h / 2; }
+    else if (t < 0.5) { x = -w / 2 + Math.random() * w; y = -h / 2; }
+    else if (t < 0.75) { x = -w / 2; y = -h / 2 + Math.random() * h; }
+    else { x = w / 2; y = -h / 2 + Math.random() * h; }
+    arr[i * 3] = x + (Math.random() - 0.5) * 0.15;
+    arr[i * 3 + 1] = y + (Math.random() - 0.5) * 0.15;
+    arr[i * 3 + 2] = (Math.random() - 0.5) * 0.5;
+  }
+  return arr;
+}
 
-  const { positions, seeds } = useMemo(() => {
-    const pos = scatterPositions(count);
-    const s = new Float32Array(count * 3);
-    for (let i = 0; i < count * 3; i++) s[i] = Math.random() * Math.PI * 2;
-    return { positions: pos, seeds: s };
+function ParticleField({ morphed, count, scrollProgress, hoveredCta }: { morphed: boolean; count: number; scrollProgress: React.RefObject<number>; hoveredCta: React.RefObject<string | null> }) {
+  const pointsRef = useRef<THREE.Points>(null!);
+  const progress = useRef(0);
+
+  const { start, end, current } = useMemo(() => {
+    const s = scatterPositions(count);
+    const e = screenPositions(count);
+    const c = new Float32Array(s);
+    return { start: s, end: e, current: c };
   }, [count]);
 
-  useFrame(({ clock }) => {
+  useFrame(() => {
+    const target = morphed ? 1 : 0;
+    progress.current += (target - progress.current) * 0.04;
     const posAttr = pointsRef.current.geometry.attributes.position as THREE.BufferAttribute;
     const pos = posAttr.array as Float32Array;
-    const t = clock.getElapsedTime() * speedRef.current;
+
+    const scrollAmt = scrollProgress.current ?? 0;
+    const compression = scrollAmt * 0.8;
 
     for (let i = 0; i < count; i++) {
       const ix = i * 3;
       const iy = i * 3 + 1;
-      const seedX = seeds[ix];
-      const seedY = seeds[iy];
-      pos[ix] = positions[ix] + Math.sin(t * 0.4 + seedX) * 0.3;
-      pos[iy] = positions[iy] + Math.cos(t * 0.3 + seedY) * 0.2;
+      const bx = start[ix] + (end[ix] - start[ix]) * progress.current;
+      const by = start[iy] + (end[iy] - start[iy]) * progress.current;
+      const dx = bx * compression;
+      const dy = by * compression * 0.5;
+      pos[ix] = bx - dx;
+      pos[iy] = by - dy;
+      pos[i * 3 + 2] = start[i * 3 + 2] + (end[i * 3 + 2] - start[i * 3 + 2]) * progress.current;
+    }
+
+    if (progress.current > 0.98) {
+      const t = Date.now() * 0.001;
+      for (let i = 0; i < count; i++) {
+        const phase = i * 0.1;
+        pos[i * 3] += Math.sin(t * 0.3 + phase) * 0.02;
+        pos[i * 3 + 1] += Math.cos(t * 0.2 + phase * 1.3) * 0.015;
+      }
+    }
+
+    const cta = hoveredCta.current;
+    if (cta && progress.current > 0.98) {
+      const tx = cta === "hire" ? -1.5 : 1.5;
+      const ty = -1.0;
+      for (let i = 0; i < count; i++) {
+        const ix = i * 3;
+        const iy = i * 3 + 1;
+        const dx = tx - pos[ix];
+        const dy = ty - pos[iy];
+        pos[ix] += dx * 0.015;
+        pos[iy] += dy * 0.015;
+      }
     }
 
     posAttr.needsUpdate = true;
-    pointsRef.current.rotation.y = t * 0.02;
+    pointsRef.current.rotation.y += 0.0009;
   });
 
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-position" args={[current, 3]} />
       </bufferGeometry>
-      <pointsMaterial
-        color="#94a3b8"
-        size={0.03}
-        transparent
-        opacity={0.35}
-        sizeAttenuation
-        depthWrite={false}
-      />
+      <pointsMaterial color="#d97706" size={0.08} transparent opacity={1} sizeAttenuation />
     </points>
   );
 }
 
-export default function ParticleHero() {
+export default function ParticleHero({ hoveredCta }: { hoveredCta?: React.RefObject<string | null> }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [morphed, setMorphed] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const scrollProgress = useRef(0);
+  const defaultHoveredCta = useRef(null);
+  const ctaRef = hoveredCta ?? defaultHoveredCta;
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
@@ -73,12 +118,27 @@ export default function ParticleHero() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  useEffect(() => {
+    if (!mounted || !isDesktop) return;
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setMorphed(true);
+        scrollProgress.current = 1 - entry.intersectionRatio;
+      },
+      { threshold: Array.from({ length: 20 }, (_, i) => i / 19) }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [mounted, isDesktop]);
+
   if (!mounted || !isDesktop) return null;
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      <Canvas camera={{ position: [0, 0, 6], fov: 60 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
-        <ParticleField count={300} />
+    <div ref={containerRef} style={{ position: "relative", width: "100%", height: "100%" }}>
+      <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
+        <ParticleField morphed={morphed} count={2200} scrollProgress={scrollProgress} hoveredCta={ctaRef} />
       </Canvas>
     </div>
   );

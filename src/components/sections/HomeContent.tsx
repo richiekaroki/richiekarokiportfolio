@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import SocialLinks from "@/components/sections/SocialLinks";
 import HeroContent from "@/components/sections/HeroContent";
@@ -64,13 +65,15 @@ const services = [
 ];
 
 export default function HomeContent() {
+  const hoveredCta = useRef<string | null>(null);
+
   return (
     <div className="w-full">
       {/* ── HERO SECTION ── */}
       <section className="relative w-full min-h-screen flex items-center">
         {/* Particle background */}
         <div className="absolute inset-0 z-0">
-          <ParticleHero />
+          <ParticleHero hoveredCta={hoveredCta} />
         </div>
 
         {/* Hero content */}
@@ -102,7 +105,7 @@ export default function HomeContent() {
 
       {/* ── TWO-PATH SPLIT ── */}
       <section className="w-full py-16">
-        <TwoPathSplit />
+        <TwoPathSplit onHover={(cta) => { hoveredCta.current = cta; }} />
       </section>
 
       {/* ── PROJECTS ── */}
