@@ -64,8 +64,6 @@ const services = [
 ];
 
 export default function HomeContent() {
-  const hoveredCta = useRef<string | null>(null);
-
   return (
     <div className="w-full">
       {/* ── HERO SECTION ── */}
@@ -104,7 +102,7 @@ export default function HomeContent() {
 
       {/* ── TWO-PATH SPLIT ── */}
       <section className="w-full py-16">
-        <TwoPathSplit onHover={(cta) => { hoveredCta.current = cta; }} />
+        <TwoPathSplit />
       </section>
 
       {/* ── PROJECTS ── */}
