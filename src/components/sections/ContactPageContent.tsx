@@ -45,12 +45,12 @@ export default function ContactPageContent() {
         <div className="w-16 h-1 bg-primary-sky mt-4" />
       </FramerWrapper>
 
-      <div className="w-full flex flex-col lg:flex-row gap-8">
-        <FramerWrapper y={50} delay={0.1} className="w-full lg:w-1/2">
+      <div className="w-full flex flex-col md:flex-row gap-8">
+        <FramerWrapper y={50} delay={0.1} className="w-full md:w-1/2">
           <ContactForm onTyping={setTyping} onSubmitStart={() => { setSubmitted(true); setTimeout(() => setSubmitted(false), 2000); }} />
         </FramerWrapper>
 
-        <FramerWrapper y={50} delay={0.2} className="w-full lg:w-1/2">
+        <FramerWrapper y={50} delay={0.2} className="w-full md:w-1/2">
           <div className="flex flex-col gap-6">
             <p className="font-inter text-lg text-muted-foreground leading-relaxed">
               Prefer a direct conversation? Reach me through any of these channels.
@@ -64,7 +64,7 @@ export default function ContactPageContent() {
                   rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className={cn(
                     buttonVariants({ variant: "outline" }),
-                    "justify-start gap-3 h-auto py-3 px-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-sky focus-visible:ring-offset-2"
+                    "justify-start gap-3 h-auto py-3 px-4 min-h-[44px] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-sky focus-visible:ring-offset-2"
                   )}
                 >
                   <span className="text-primary-sky">{method.icon}</span>

@@ -25,6 +25,7 @@ const DOCK_HEIGHT = 128;
 const DEFAULT_MAGNIFICATION = 80;
 const DEFAULT_DISTANCE = 150;
 const DEFAULT_PANEL_HEIGHT = 64;
+const DEFAULT_SPRING: SpringOptions = { mass: 0.1, stiffness: 150, damping: 12 };
 
 type DockProps = {
   children: React.ReactNode;
@@ -75,7 +76,7 @@ function useDock() {
 function Dock({
   children,
   className,
-  spring = { mass: 0.1, stiffness: 150, damping: 12 },
+  spring = DEFAULT_SPRING,
   magnification = DEFAULT_MAGNIFICATION,
   distance = DEFAULT_DISTANCE,
   panelHeight = DEFAULT_PANEL_HEIGHT,

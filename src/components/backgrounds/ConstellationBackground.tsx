@@ -1,14 +1,17 @@
 "use client";
 
+import LazyLoad from "@/components/ui/LazyLoad";
+
+const stars = Array.from({ length: 40 }).map((_, i) => ({
+  id: i,
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  size: 2 + Math.random() * 3,
+  delay: Math.random() * 6,
+  duration: 4 + Math.random() * 6,
+}));
+
 export default function ConstellationBackground() {
-  const stars = Array.from({ length: 40 }).map((_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: 2 + Math.random() * 3,
-    delay: Math.random() * 6,
-    duration: 4 + Math.random() * 6,
-  }));
 
   return (
     <div className="absolute inset-0 z-0 opacity-40 overflow-hidden pointer-events-none" aria-hidden="true">

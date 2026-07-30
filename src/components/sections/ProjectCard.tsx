@@ -27,7 +27,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
   return (
     <FramerWrapper
-      className={cn("w-full", featured && "lg:col-span-2")}
+      className={cn("w-full", featured && "md:col-span-2")}
       y={0}
       scale={0.8}
       delay={num / 4}
@@ -36,10 +36,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
       <Card
         className={cn(
           "w-full h-full flex flex-col hover:shadow-lg transition-all duration-300 border-2",
-          featured && "lg:flex-row lg:items-center"
+          featured && "md:flex-row md:items-center"
         )}
       >
-        <CardHeader className={cn("pb-2", featured && "lg:w-1/2 lg:pb-2 lg:pl-6")}>
+        <CardHeader className={cn("pb-2", featured && "md:w-1/2 md:pb-2 md:pl-6")}>
           <CardTitle className="text-xl font-bold text-primary">
             {value.title}
           </CardTitle>
@@ -48,7 +48,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
         <CardContent
           className={cn(
             "flex-grow flex flex-col gap-4",
-            featured && "lg:w-1/2 lg:pr-6"
+            featured && "md:w-1/2 md:pr-6"
           )}
         >
           <p className="text-sm text-muted-foreground leading-relaxed">
@@ -67,24 +67,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
           </div>
         </CardContent>
 
-        <CardFooter className={cn("pt-2 gap-2", featured && "lg:justify-end lg:pr-6")}>
-          {value.repo && (
+        <CardFooter className={cn("pt-2 gap-2", featured && "md:justify-end md:pr-6")}>
+          {value.repo ? (
             <Link
               href={value.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({
-                  variant: "outline",
-                  size: "sm",
-                }),
-                "w-fit transition-all hover:translate-y-[-2px] hover:shadow-md group"
-              )}
+            className={cn(
+              buttonVariants({
+                variant: "outline",
+                size: "sm",
+              }),
+              "w-fit transition-all hover:translate-y-[-2px] hover:shadow-md active:scale-95 group"
+            )}
             >
               <SiGithub className="h-4 w-4 mr-1" />
               Source
             </Link>
-          )}
+          ) : null}
           <Link
             href={value.link}
             target="_blank"
@@ -94,7 +94,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
                 variant: "default",
                 size: "sm",
               }),
-              "w-fit transition-all hover:translate-y-[-2px] hover:shadow-md group"
+              "w-fit transition-all hover:translate-y-[-2px] hover:shadow-md active:scale-95 group"
             )}
           >
             Visit Project

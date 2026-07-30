@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -20,6 +20,13 @@ function generateStars(count: number) {
 function Stars({ positions }: { positions: Float32Array }) {
   const ref = useRef<THREE.Points>(null!);
   const frameCount = useRef(0);
+
+  useEffect(() => {
+    return () => {
+      ref.current?.geometry.dispose();
+      (ref.current?.material as THREE.Material)?.dispose();
+    };
+  }, []);
 
   useFrame(() => {
     frameCount.current++;

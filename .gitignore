@@ -34,6 +34,7 @@ build/
 hthumbs.db
 Thumbs.db
 Desktop.ini
+*.stackdump
 
 # ==================== LOGS ====================
 logs/
@@ -72,10 +73,16 @@ temp/
 .agents/
 .impeccable/
 .playwright-mcp/
+.opencode/
 skills-lock.json
 opencode.json
 DESIGN.md
 PRODUCT.md
+
+# ==================== PYTHON (skill scripts) ====================
+__pycache__/
+*.pyc
+*.pyo
 
 # ==================== NEXT.JS ====================
 .next/

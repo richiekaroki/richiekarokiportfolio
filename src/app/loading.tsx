@@ -1,9 +1,13 @@
-import { Loader } from "lucide-react";
-
+import RKLogo from "@/components/ui/RKLogo";
 
 export default function Loading() {
-    return (
-        <Loader className="h-11 w-11 absolute m-auto top-0 bottom-0 right-0 left-0 animate-spin text-primary-sky z-50"/>
-       
-    )
-  }
+  return (
+    <div className="min-h-screen w-full flex flex-col items-center justify-center gap-4">
+      <div className="relative">
+        <RKLogo size="lg" />
+        <div className="absolute inset-0 rounded-full border-2 border-primary-sky border-t-transparent animate-spin" />
+      </div>
+      <p className="text-sm text-muted-foreground font-inter">Loading...</p>
+    </div>
+  );
+}

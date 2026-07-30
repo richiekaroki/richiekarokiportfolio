@@ -25,7 +25,7 @@ const SectionNav = ({ items, activeSection }: SectionNavProps) => {
             key={item.id}
             href={`#${item.id}`}
             className={cn(
-              "px-3 py-1.5 text-sm rounded-md transition-colors",
+              "px-3 py-1.5 text-sm rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-sky focus-visible:ring-offset-2 focus-visible:ring-offset-background",
               activeSection === item.id
                 ? "text-primary-sky font-medium bg-primary-sky/10"
                 : "text-muted-foreground hover:text-primary"
@@ -39,7 +39,7 @@ const SectionNav = ({ items, activeSection }: SectionNavProps) => {
       {/* Mobile: horizontal scrollable tabs */}
       <nav
         aria-label="About page sections"
-        className="lg:hidden sticky top-16 z-20 w-full bg-background/80 backdrop-blur-md border-b border-border/50"
+        className="lg:hidden sticky top-16 z-20 w-full bg-background/80 backdrop-blur-md border-b border-border/50 scroll-hint"
       >
         <div className="flex gap-1 overflow-x-auto no-scrollbar px-6 py-2">
           {items.map((item) => (
@@ -47,7 +47,7 @@ const SectionNav = ({ items, activeSection }: SectionNavProps) => {
               key={item.id}
               href={`#${item.id}`}
               className={cn(
-                "px-3 py-1.5 text-sm rounded-md whitespace-nowrap transition-colors shrink-0",
+                "px-3 py-2.5 text-sm rounded-md whitespace-nowrap transition-colors shrink-0 min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-sky focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                 activeSection === item.id
                   ? "text-primary-sky font-medium bg-primary-sky/10"
                   : "text-muted-foreground hover:text-primary"

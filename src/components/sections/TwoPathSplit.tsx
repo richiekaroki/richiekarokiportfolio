@@ -36,7 +36,7 @@ export default function TwoPathSplit({ onHover }: { onHover?: (cta: "hire" | "le
               onMouseEnter={() => onHover?.(idx === 0 ? "hire" : "learn")}
               onMouseLeave={() => onHover?.(null)}
             >
-              <Card className="h-full transition-all duration-300 hover:shadow-lg hover:border-primary-sky/50 cursor-pointer border-border/50">
+              <Card className="h-full transition-all duration-300 hover:shadow-lg hover:border-primary-sky/50 active:scale-[0.98] active:shadow-md cursor-pointer border-border/50">
                 <CardHeader className="flex flex-row items-center gap-3 pb-3">
                   <div className="text-primary-sky">{path.icon}</div>
                   <CardTitle className="text-xl font-bold text-primary">

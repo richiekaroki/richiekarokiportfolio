@@ -30,7 +30,7 @@ const SocialLinks = () => {
             rel="noopener noreferrer"
             href={itm.link}
             aria-label={itm.name}
-            className={cn(buttonVariants({ variant: "outline", size: "icon" }), "min-w-[44px] min-h-[44px]")}
+            className={cn(buttonVariants({ variant: "outline", size: "icon" }), "min-w-[44px] min-h-[44px] active:scale-90 transition-transform")}
             ><itm.Icon /></Link>
             </FramerWrapper>
         );

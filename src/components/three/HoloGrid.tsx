@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -20,6 +20,19 @@ function Grid() {
       positions.push(pos, 0, -size / 2, pos, 0, size / 2);
     }
     return new Float32Array(positions);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      ref.current?.children.forEach((child) => {
+        if ((child as THREE.LineSegments).geometry) {
+          (child as THREE.LineSegments).geometry.dispose();
+        }
+        if ((child as THREE.LineSegments).material) {
+          ((child as THREE.LineSegments).material as THREE.Material).dispose();
+        }
+      });
+    };
   }, []);
 
   useFrame(() => {

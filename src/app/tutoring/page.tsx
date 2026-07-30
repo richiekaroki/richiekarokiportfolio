@@ -5,6 +5,7 @@ import { BookOpen, Users, Award, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import type { Metadata } from "next";
+import StructuredData from "@/components/seo/StructuredData";
 
 export const metadata: Metadata = {
   title: "Tutoring",
@@ -39,6 +40,7 @@ const formatDetails = [
 export default function TutoringPage() {
   return (
     <div className="min-h-screen w-full relative flex flex-col items-start gap-10 overflow-hidden">
+      <StructuredData page="tutoring" />
       <ThreeBackground />
       <FramerWrapper y={0} x={-100} className="w-full relative z-10">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
@@ -102,16 +104,6 @@ export default function TutoringPage() {
           You&apos;re learning from an active working engineer teaching from real practice,
           not just a curriculum. I build production software every day, and what I teach
           comes from what actually works in the industry.
-        </p>
-      </FramerWrapper>
-
-      {/* Student Outcomes placeholder */}
-      <FramerWrapper y={50} delay={0.3} className="w-full">
-        <h2 className="text-2xl font-source-serif text-primary font-semibold mb-4">
-          Student Outcomes
-        </h2>
-        <p className="text-muted-foreground italic">
-          [Student success stories coming soon]
         </p>
       </FramerWrapper>
 

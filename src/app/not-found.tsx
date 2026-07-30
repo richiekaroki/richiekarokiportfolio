@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import RKLogo from "@/components/ui/RKLogo";
 
 export default function NotFound() {
   return (
     <div className="h-full w-full flex flex-col items-center justify-center text-center gap-6">
+      <RKLogo size="xl" />
       <h1 className="font-source-serif text-primary font-bold text-7xl sm:text-8xl">
         404
       </h1>

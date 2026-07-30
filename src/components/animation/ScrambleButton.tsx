@@ -32,7 +32,13 @@ const ScrambleButton = ({ label }: { label: string }) => {
   }, [label]);
 
   return (
-    <Button size={'lg'} className='text-base px-5 py-6' onMouseEnter={startScrambling}>
+    <Button
+      size={'lg'}
+      className='text-base px-5 py-6 active:scale-95 transition-transform'
+      onMouseEnter={startScrambling}
+      onTouchStart={startScrambling}
+      onFocus={startScrambling}
+    >
       <Download className="mx-1" />
       {displayText}
     </Button>

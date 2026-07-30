@@ -1,12 +1,19 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 function PulseRing({ delay, color, speed }: { delay: number; color: string; speed: number }) {
   const ref = useRef<THREE.Mesh>(null!);
   const frameCount = useRef(0);
+
+  useEffect(() => {
+    return () => {
+      ref.current?.geometry.dispose();
+      (ref.current?.material as THREE.Material)?.dispose();
+    };
+  }, []);
 
   useFrame(() => {
     frameCount.current++;

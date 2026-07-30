@@ -30,10 +30,10 @@ const ContactForm = ({ onTyping, onSubmitStart }: { onTyping?: (typing: boolean)
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = (formData: FormData) => {
-    setError(null);
-    setSuccess(false);
     onSubmitStart?.();
     startTransition(async () => {
+      setError(null);
+      setSuccess(false);
       const result = await SendEmail(formData);
       if (result && "error" in result) {
         setError(result.error as string);
@@ -58,18 +58,23 @@ const ContactForm = ({ onTyping, onSubmitStart }: { onTyping?: (typing: boolean)
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {error && (
+          {/* Honeypot — hidden from humans, bots will fill it */}
+          <div className="absolute opacity-0 pointer-events-none h-0 w-0 overflow-hidden" aria-hidden="true">
+            <Label htmlFor="website">Website</Label>
+            <Input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+          </div>
+          {error ? (
             <div role="alert" className="flex items-center gap-2 p-3 mb-4 text-sm text-destructive bg-destructive/10 rounded-md">
               <AlertCircle className="h-4 w-4 flex-shrink-0" />
               <span>{error}</span>
             </div>
-          )}
-          {success && (
+          ) : null}
+          {success ? (
             <div role="status" className="flex items-center gap-2 p-3 mb-4 text-sm text-green-600 bg-green-50 dark:bg-green-900/20 dark:text-green-400 rounded-md">
               <CheckCircle className="h-4 w-4 flex-shrink-0" />
               <span>Message sent successfully!</span>
             </div>
-          )}
+          ) : null}
           <div className="grid w-full items-center gap-1.5 mt-2">
             <Label htmlFor="name">Name <span className="text-destructive" aria-hidden="true">*</span></Label>
             <Input
@@ -108,7 +113,7 @@ const ContactForm = ({ onTyping, onSubmitStart }: { onTyping?: (typing: boolean)
               aria-required="true"
               onFocus={() => onTyping?.(true)}
               onBlur={() => onTyping?.(false)}
-              className="resize-none flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="resize-y flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             ></textarea>
           </div>
         </CardContent>

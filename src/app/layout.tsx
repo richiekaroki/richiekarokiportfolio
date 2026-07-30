@@ -1,9 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {  Source_Serif_4, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import dynamic from "next/dynamic";
+
+const DeferredAnalytics = dynamic(
+  () => import("@vercel/analytics/react").then((m) => m.Analytics),
+  { ssr: false }
+);
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
+import PageTransition from "@/components/animation/PageTransition";
+import StructuredData from "@/components/seo/StructuredData";
 import { siteConfig } from "@/lib/config";
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -17,6 +25,12 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://richiekaroki.vercel.app"),
@@ -53,12 +67,21 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [
+      {
+        url: `${siteConfig.url}/og`,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
     creator: "@richiekaroki",
+    images: [`${siteConfig.url}/og`],
   },
   icons: {
     icon: "/favicon.ico",
@@ -73,6 +96,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <StructuredData />
         <script
           dangerouslySetInnerHTML={{
             __html: `try{const t=localStorage.getItem('theme');const d=t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.classList.toggle('dark',d)}catch(e){}`,
@@ -89,14 +113,14 @@ export default function RootLayout({
         <main
           id="main-content"
           className={cn(
-            "flex relative break-words min-h-screen items-start justify-between pt-14 pb-8 px-5 md:px-10 lg:px-20 xl:px-40 max-sm:pt-20 overflow-x-hidden"
+            "flex relative break-words min-h-screen items-start justify-between pt-14 pb-8 px-5 md:px-10 lg:px-20 xl:px-40 max-sm:pt-20 max-lg:pb-24 overflow-x-hidden"
           )}
         >
           {/* NAVBAR ->  */}
           <Navbar />
-          {children}
+          <PageTransition>{children}</PageTransition>
         </main>
-        <Analytics />
+        <DeferredAnalytics />
       </body>
     </html>
   );

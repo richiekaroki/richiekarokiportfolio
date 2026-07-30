@@ -53,6 +53,7 @@
  
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 7%;
+    --primary-sky: 217 91% 65%;
  
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
@@ -76,8 +77,15 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+    overscroll-behavior: contain;
+  }
+  a, button, [role="button"] {
+    touch-action: manipulation;
   }
 }
 
@@ -102,6 +110,26 @@
 /* NO SCROLLBAR */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* SAFE AREA — bottom tab bar on mobile */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* SCROLL HINT — fade-out gradient for horizontal scroll tabs */
+.scroll-hint {
+  position: relative;
+}
+.scroll-hint::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(to right, transparent, hsl(var(--background)));
+  pointer-events: none;
+}
 
 /* REDUCED MOTION */
 @media (prefers-reduced-motion: reduce) {

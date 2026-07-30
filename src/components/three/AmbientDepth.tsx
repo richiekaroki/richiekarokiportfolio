@@ -4,36 +4,31 @@ import { useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
+const speedMap: Record<string, number> = {
+  bio: 1,
+  "quick-facts": 1.1,
+  skills: 1.5,
+  education: 0.7,
+  certifications: 1,
+  writing: 0.9,
+};
+
+const COLORS = [0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706];
+
+interface ShapeData {
+  mesh: THREE.Mesh;
+  speed: number;
+  baseOpacity: number;
+  targetOpacity: number;
+}
+
 function FloatingShapes({ section }: { section: string }) {
   const groupRef = useRef<THREE.Group>(null!);
   const mouse = useRef({ x: 0, y: 0 });
-  const shapes = useRef<{ mesh: THREE.Mesh; speed: number; baseOpacity: number; targetOpacity: number }[]>([]);
   const frameCount = useRef(0);
   const sectionSpeed = useRef(1);
   const { camera } = useThree();
   const vec = useMemo(() => new THREE.Vector3(), []);
-
-  const speedMap: Record<string, number> = {
-    bio: 1,
-    "quick-facts": 1.1,
-    skills: 1.5,
-    education: 0.7,
-    certifications: 1,
-    writing: 0.9,
-  };
-
-  useEffect(() => {
-    sectionSpeed.current = speedMap[section] ?? 1;
-  }, [section]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.current.x = (e.clientX / window.innerWidth - 0.5);
-      mouse.current.y = (e.clientY / window.innerHeight - 0.5);
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   const geos = useMemo(() => [
     new THREE.IcosahedronGeometry(0.9, 0),
@@ -43,12 +38,12 @@ function FloatingShapes({ section }: { section: string }) {
     new THREE.IcosahedronGeometry(0.5, 0),
   ], []);
 
-  if (shapes.current.length === 0) {
-    const colors = [0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706];
+  const shapes = useMemo<ShapeData[]>(() => {
+    const result: ShapeData[] = [];
     for (let i = 0; i < 9; i++) {
       const geo = geos[i % geos.length];
       const mat = new THREE.MeshBasicMaterial({
-        color: colors[i],
+        color: COLORS[i],
         wireframe: true,
         transparent: true,
         opacity: 0.35,
@@ -60,16 +55,39 @@ function FloatingShapes({ section }: { section: string }) {
         (Math.random() - 0.5) * 5 - 2
       );
       const speed = 0.001 + Math.random() * 0.002;
-      shapes.current.push({ mesh, speed, baseOpacity: 0.35, targetOpacity: 0.35 });
+      result.push({ mesh, speed, baseOpacity: 0.35, targetOpacity: 0.35 });
     }
-  }
+    return result;
+  }, [geos]);
+
+  useEffect(() => {
+    sectionSpeed.current = speedMap[section] ?? 1;
+  }, [section]);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.current.x = (e.clientX / window.innerWidth - 0.5);
+      mouse.current.y = (e.clientY / window.innerHeight - 0.5);
+    };
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      shapes.forEach((s) => {
+        s.mesh.geometry.dispose();
+        (s.mesh.material as THREE.Material).dispose();
+      });
+    };
+  }, [shapes]);
 
   useFrame(() => {
     frameCount.current++;
     if (frameCount.current % 2 !== 0) return;
     if (!groupRef.current) return;
     const speed = sectionSpeed.current;
-    shapes.current.forEach((s) => {
+    shapes.forEach((s) => {
       s.mesh.rotation.x += s.speed * speed;
       s.mesh.rotation.y += s.speed * 0.8 * speed;
 
@@ -88,7 +106,7 @@ function FloatingShapes({ section }: { section: string }) {
 
   return (
     <group ref={groupRef}>
-      {shapes.current.map((s, i) => (
+      {shapes.map((s, i) => (
         <primitive key={i} object={s.mesh} />
       ))}
     </group>

@@ -1,86 +1,22 @@
-"use client";
-
+import type { Metadata } from "next";
 import FramerWrapper from "@/components/animation/FramerWrapper";
-import HoloGridBackground from "@/components/backgrounds/HoloGridBackground";
-import ProjectCard from "@/components/sections/ProjectCard";
-import Image from "next/image";
-import work1 from "@/assets/work-1.png";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import ProjectsContent from "@/components/sections/ProjectsContent";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "A curated collection of projects by Richard Karoki — featuring production APIs, full stack applications, and creative web development work.",
+  openGraph: {
+    title: "Projects | Richard Karoki",
+    description:
+      "Explore projects by Richard Karoki — production APIs, broadcast platforms, onboarding tools, and more.",
+    url: "https://richiekaroki.vercel.app/projects",
+  },
+};
 
 export default function ProjectsPage() {
-  const featured = [
-    {
-      title: "Job Application API",
-      description:
-        "Production grade Job Applications API built with NestJS, TypeScript, PostgreSQL and Redis. Features JWT auth with refresh token rotation, 4 role RBAC, webhook delivery with HMAC SHA256 signing, rate limiting, and full Swagger documentation.",
-      tags: ["NestJS", "TypeScript", "PostgreSQL", "Redis", "JWT"],
-      link: "https://job-application-api-production.up.railway.app/api/v1/docs",
-      repo: "https://github.com/richiekaroki/job-application-api",
-    },
-    {
-      title: "Broadcast Hub",
-      description:
-        "Media and Broadcast Content Management Platform built with NestJS and React. Full stack solution for managing broadcast content workflows with a modern TypeScript stack.",
-      tags: ["NestJS", "React", "TypeScript", "Full Stack"],
-      link: "https://broadcast-hub-web.vercel.app/",
-      repo: "https://github.com/richiekaroki/broadcast-hub",
-    },
-    {
-      title: "Actserv Onboarding Platform",
-      description:
-        "Enterprise onboarding platform built with TypeScript. Streamlines the employee onboarding journey with a clean, production ready interface.",
-      tags: ["TypeScript", "React", "Enterprise", "Frontend"],
-      link: "https://onboarding-frontend.vercel.app/",
-    },
-    {
-      title: "Product Dashboard",
-      description:
-        "A real time product analytics dashboard built with TypeScript and React. Visualizes key metrics and performance data with responsive charts and tables.",
-      tags: ["TypeScript", "React", "Analytics", "Dashboard"],
-      link: "https://product-dashboard-nine-kappa.vercel.app/",
-    },
-    {
-      title: "Zoo App",
-      description:
-        "An interactive zoo management application built with Vue.js. Features animal browsing, categorization, and a clean responsive interface.",
-      tags: ["Vue", "JavaScript", "Responsive"],
-      link: "https://zoo-app-nu.vercel.app",
-    },
-  ];
-
-  const more = [
-    {
-      title: "Solami Sportsbook Landing",
-      description:
-        "Sportsbook landing page demo built with SvelteKit, TypeScript, and Tailwind CSS. Features real time bet slip state management, derived odds calculations, and responsive design.",
-      tags: ["SvelteKit", "TypeScript", "Tailwind CSS", "State Management"],
-      link: "https://solami-sportsbook-landing.vercel.app",
-    },
-    {
-      title: "Court Case App",
-      description:
-        "A court case management application built with TypeScript. Tracks and organizes legal case data with a clean, functional interface.",
-      tags: ["TypeScript", "React", "Legal Tech"],
-      link: "https://github.com/richiekaroki/court-case-app",
-      repo: "https://github.com/richiekaroki/court-case-app",
-    },
-    {
-      title: "Livestock Demo",
-      description:
-        "A livestock management demo application built with TypeScript. Demonstrates full stack capabilities with a focus on data modeling and UI.",
-      tags: ["TypeScript", "Full Stack", "Agritech"],
-      link: "https://github.com/richiekaroki/livestock-demo",
-      repo: "https://github.com/richiekaroki/livestock-demo",
-    },
-  ];
-
-  const [showAll, setShowAll] = useState(false);
-
   return (
     <div className="min-h-screen w-full relative flex flex-col items-start gap-8 overflow-hidden">
-      <HoloGridBackground />
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
           Projects
@@ -88,57 +24,7 @@ export default function ProjectsPage() {
         <div className="w-16 h-1 bg-primary-sky mt-4" />
       </FramerWrapper>
 
-      <FramerWrapper y={50} delay={0.1} className="w-full">
-        <div className="relative w-full aspect-video max-h-[280px] rounded-lg overflow-hidden">
-          <Image
-            src={work1}
-            alt="Richard Karoki, Work"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-        </div>
-      </FramerWrapper>
-
-      <FramerWrapper y={50} delay={0.15} className="w-full">
-        <p className="font-inter text-lg w-full text-muted-foreground max-sm:text-base max-w-2xl leading-relaxed">
-          A curated collection of creative endeavors and technical projects.
-          Each piece represents a journey of innovation, problem solving, and
-          continuous learning.
-        </p>
-      </FramerWrapper>
-
-      {/* Featured: first card full-width, rest in 2-col grid */}
-      <FramerWrapper y={50} delay={0.2} className="w-full">
-        <ProjectCard value={featured[0]} num={0} featured />
-      </FramerWrapper>
-
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {featured.slice(1).map((val, indx) => (
-          <ProjectCard key={indx} value={val} num={indx + 1} />
-        ))}
-      </div>
-
-      {showAll && (
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {more.map((val, indx) => (
-            <ProjectCard key={indx} value={val} num={indx + featured.length} />
-          ))}
-        </div>
-      )}
-
-      <Button
-        variant="ghost"
-        onClick={() => setShowAll(!showAll)}
-        className="gap-2 text-muted-foreground"
-      >
-        {showAll ? (
-          <>Show less <ChevronUp className="h-4 w-4" /></>
-        ) : (
-          <>View all projects <ChevronDown className="h-4 w-4" /></>
-        )}
-      </Button>
+      <ProjectsContent />
     </div>
   );
-};
+}

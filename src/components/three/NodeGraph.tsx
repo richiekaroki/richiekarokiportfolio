@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo, useState, useEffect, useCallback } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -10,10 +10,10 @@ const stack = [
   "Firebase", "Redis",
 ];
 
-function Nodes() {
+function Nodes({ onHover }: { onHover: (idx: number | null) => void }) {
   const groupRef = useRef<THREE.Group>(null!);
   const { raycaster, camera, size } = useThree();
-  const [hovered, setHovered] = useState<number | null>(null);
+  const hoveredRef = useRef<number | null>(null);
   const mouse = useRef(new THREE.Vector2());
 
   const { nodes, lines } = useMemo(() => {
@@ -55,11 +55,24 @@ function Nodes() {
   }, []);
 
   useEffect(() => {
+    return () => {
+      nodes.forEach((n) => {
+        n.mesh.geometry.dispose();
+        (n.mesh.material as THREE.Material).dispose();
+      });
+      lines.forEach((l) => {
+        l.geometry.dispose();
+        (l.material as THREE.Material).dispose();
+      });
+    };
+  }, [nodes, lines]);
+
+  useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       mouse.current.x = (e.clientX / size.width) * 2 - 1;
       mouse.current.y = -(e.clientY / size.height) * 2 + 1;
     };
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [size]);
 
@@ -72,19 +85,23 @@ function Nodes() {
     const meshes = nodes.map((n) => n.mesh);
     const hits = raycaster.intersectObjects(meshes);
 
-    nodes.forEach((n, i) => {
-      const mat = n.mesh.material as THREE.MeshBasicMaterial;
-      mat.color.setHex(hovered === i ? 0xfde68a : 0xd97706);
-      n.mesh.scale.setScalar(hovered === i ? 1.4 : 1);
-    });
-
+    let nextHovered: number | null = null;
     if (hits.length) {
       const hitMesh = hits[0].object as THREE.Mesh;
       const idx = nodes.findIndex((n) => n.mesh === hitMesh);
-      if (idx !== -1) setHovered(idx);
-    } else {
-      setHovered(null);
+      if (idx !== -1) nextHovered = idx;
     }
+
+    if (hoveredRef.current !== nextHovered) {
+      hoveredRef.current = nextHovered;
+      onHover(nextHovered);
+    }
+
+    nodes.forEach((n, i) => {
+      const mat = n.mesh.material as THREE.MeshBasicMaterial;
+      mat.color.setHex(nextHovered === i ? 0xfde68a : 0xd97706);
+      n.mesh.scale.setScalar(nextHovered === i ? 1.4 : 1);
+    });
   });
 
   return (
@@ -100,13 +117,16 @@ function Nodes() {
 }
 
 function Tooltip({ hovered }: { hovered: number | null }) {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setPos({ x: e.clientX + 14, y: e.clientY + 14 });
+      if (ref.current) {
+        ref.current.style.left = `${e.clientX + 14}px`;
+        ref.current.style.top = `${e.clientY + 14}px`;
+      }
     };
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
@@ -114,10 +134,11 @@ function Tooltip({ hovered }: { hovered: number | null }) {
 
   return (
     <div
+      ref={ref}
       style={{
         position: "fixed",
-        left: pos.x,
-        top: pos.y,
+        left: 0,
+        top: 0,
         background: "#1c1917",
         color: "#fde68a",
         padding: "6px 12px",
@@ -134,8 +155,12 @@ function Tooltip({ hovered }: { hovered: number | null }) {
 }
 
 export default function NodeGraph() {
-  const [hovered] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  const handleHover = useCallback((idx: number | null) => {
+    setHovered(idx);
+  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -160,7 +185,7 @@ export default function NodeGraph() {
       ) : (
         <>
           <Canvas camera={{ position: [0, 0, 9], fov: 60 }} dpr={[1, 1.5]}>
-            <Nodes />
+            <Nodes onHover={handleHover} />
           </Canvas>
           <Tooltip hovered={hovered} />
         </>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -19,6 +19,13 @@ function GeoShape({
 }) {
   const ref = useRef<THREE.Mesh>(null!);
   const initialRotation = useMemo(() => rotation, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    return () => {
+      ref.current?.geometry.dispose();
+      (ref.current?.material as THREE.Material)?.dispose();
+    };
+  }, []);
 
   useFrame(() => {
     ref.current.rotation.x = initialRotation[0] + Math.sin(Date.now() * speed * 0.001) * 0.3;
