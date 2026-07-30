@@ -70,7 +70,7 @@ export default function HomeContent() {
       <section className="relative w-full min-h-screen flex items-center">
         {/* Particle background */}
         <div className="absolute inset-0 z-0">
-          <ParticleHero hoveredCta={hoveredCta} />
+          <ParticleHero />
         </div>
 
         {/* Hero content */}
