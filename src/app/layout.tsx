@@ -8,7 +8,6 @@ import StructuredData from "@/components/seo/StructuredData";
 import DeferredAnalytics from "@/components/ui/DeferredAnalytics";
 import WebVitals from "@/components/ui/WebVitals";
 import BackToTop from "@/components/ui/BackToTop";
-import KeyboardShortcuts from "@/components/ui/KeyboardShortcuts";
 import { Toaster } from "sonner";
 import { siteConfig } from "@/lib/config";
 const sourceSerif = Source_Serif_4({
@@ -84,11 +83,6 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-  alternates: {
-    types: {
-      "application/rss+xml": `${siteConfig.url}/feed.xml`,
-    },
-  },
 };
 
 export default function RootLayout({
@@ -126,7 +120,6 @@ export default function RootLayout({
         <DeferredAnalytics />
         <WebVitals />
         <BackToTop />
-        <KeyboardShortcuts />
         <Toaster position="bottom-center" richColors />
       </body>
     </html>
