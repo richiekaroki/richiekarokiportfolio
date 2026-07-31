@@ -83,6 +83,11 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  alternates: {
+    types: {
+      "application/rss+xml": `${siteConfig.url}/feed.xml`,
+    },
+  },
 };
 
 export default function RootLayout({
