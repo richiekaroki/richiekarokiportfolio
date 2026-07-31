@@ -56,7 +56,7 @@ const caseStudies = [
 
 export default function ConsultingPage() {
   return (
-    <div className="min-h-screen w-full relative flex flex-col items-start gap-10 overflow-hidden">
+    <div className="min-h-0 lg:min-h-screen w-full relative flex flex-col items-start gap-10 overflow-hidden">
       <StructuredData page="consulting" />
       <ThreeBackground />
       <FramerWrapper y={0} x={-100} className="w-full relative z-10">
