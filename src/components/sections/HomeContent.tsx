@@ -70,14 +70,14 @@ export default function HomeContent() {
   return (
     <div className="w-full">
       {/* ── HERO SECTION ── */}
-      <section className="relative w-full min-h-screen flex items-center">
+      <section className="relative w-full min-h-screen flex items-start lg:items-center">
         {/* Particle background */}
         <div className="absolute inset-0 z-0">
           <ParticleHero hoveredCta={hoveredCta} />
         </div>
 
         {/* Hero content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-20 sm:pt-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-20 lg:pt-20">
           <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-12 lg:gap-20">
             {/* LEFT — Text */}
             <FramerWrapper className="flex-1 max-w-xl" y={0} x={-80}>
