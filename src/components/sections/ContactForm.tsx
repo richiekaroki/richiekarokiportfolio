@@ -16,6 +16,7 @@ import { useTransition, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { SendEmail } from "@/actions/send-email";
 import { CheckCircle, AlertCircle } from "lucide-react";
+import { toast } from "sonner";
 
 const placeholders: Record<string, string> = {
   consulting: "Tell me about your project, timeline, and what you need built...",
@@ -37,8 +38,10 @@ const ContactForm = ({ onTyping, onSubmitStart }: { onTyping?: (typing: boolean)
       const result = await SendEmail(formData);
       if (result && "error" in result) {
         setError(result.error as string);
+        toast.error("Failed to send message", { description: result.error as string });
       } else {
         setSuccess(true);
+        toast.success("Message sent!", { description: "I'll get back to you within 24 hours." });
       }
     });
   };

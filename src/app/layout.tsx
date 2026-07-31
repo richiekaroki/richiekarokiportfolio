@@ -7,6 +7,7 @@ import PageTransition from "@/components/animation/PageTransition";
 import StructuredData from "@/components/seo/StructuredData";
 import DeferredAnalytics from "@/components/ui/DeferredAnalytics";
 import WebVitals from "@/components/ui/WebVitals";
+import { Toaster } from "sonner";
 import { siteConfig } from "@/lib/config";
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -117,6 +118,7 @@ export default function RootLayout({
         </main>
         <DeferredAnalytics />
         <WebVitals />
+        <Toaster position="bottom-center" richColors />
       </body>
     </html>
   );
