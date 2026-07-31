@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-0 lg:min-h-screen w-full relative flex flex-col items-start gap-8 overflow-hidden">
+    <div className="min-h-0 lg:min-h-dvh w-full relative flex flex-col items-start gap-8 overflow-hidden">
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
           Projects

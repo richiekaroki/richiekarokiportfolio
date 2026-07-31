@@ -39,7 +39,7 @@ const formatDetails = [
 
 export default function TutoringPage() {
   return (
-    <div className="min-h-0 lg:min-h-screen w-full relative flex flex-col items-start gap-10 overflow-hidden">
+    <div className="min-h-0 lg:min-h-dvh w-full relative flex flex-col items-start gap-10 overflow-hidden">
       <StructuredData page="tutoring" />
       <ThreeBackground />
       <FramerWrapper y={0} x={-100} className="w-full relative z-10">

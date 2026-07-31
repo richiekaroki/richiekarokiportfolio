@@ -108,7 +108,7 @@ export default function AboutContent() {
   }, []);
 
   return (
-    <div className="min-h-0 lg:min-h-screen w-full relative flex flex-col overflow-hidden">
+    <div className="min-h-0 lg:min-h-dvh w-full relative flex flex-col overflow-hidden">
       <AmbientDepth section={activeSection} />
 
       {/* Mobile nav (horizontal tabs) */}

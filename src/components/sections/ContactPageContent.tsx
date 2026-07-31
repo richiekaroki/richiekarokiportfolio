@@ -36,7 +36,7 @@ export default function ContactPageContent() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="min-h-0 lg:min-h-screen w-full relative flex flex-col items-start gap-8 overflow-hidden">
+    <div className="min-h-0 lg:min-h-dvh w-full relative flex flex-col items-start gap-8 overflow-hidden">
       <PulseWaveBackground typing={typing} submitted={submitted} />
       <FramerWrapper y={0} x={-100} className="w-full">
         <h1 className="font-source-serif text-primary font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight [text-wrap:balance]">
