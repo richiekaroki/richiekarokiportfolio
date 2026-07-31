@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import SocialLinks from "@/components/sections/SocialLinks";
 import HeroContent from "@/components/sections/HeroContent";
 import HeroImage from "@/components/sections/HeroImage";
@@ -84,7 +85,7 @@ export default function HomeContent() {
               <HeroContent />
               <div className="mt-8 flex items-center gap-4">
                 <SocialLinks />
-                <Link href="/Richie-software-engineer.pdf" download>
+                <Link href="/Richie-software-engineer.pdf" download onClick={() => track("resume_download")}>
                   <ScrambleButton label="Download Resume" />
                 </Link>
               </div>
