@@ -69,7 +69,7 @@ export default function ContactPageContent() {
                 >
                   <span className="text-primary-sky">{method.icon}</span>
                   <div className="flex flex-col items-start">
-                    <span className="text-xs text-muted-foreground uppercase tracking-wide">{method.label}</span>
+                    <span className="text-[11px] sm:text-xs text-muted-foreground uppercase tracking-wide">{method.label}</span>
                     <span className="text-sm font-medium text-foreground">{method.value}</span>
                   </div>
                 </Link>

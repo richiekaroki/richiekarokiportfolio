@@ -89,7 +89,7 @@ const Navbar = () => {
                 )}
               >
                 <span className="w-5 h-5">{item.icon}</span>
-                <span className="text-[10px] font-medium leading-none">{item.title}</span>
+                <span className="text-[11px] font-medium leading-none">{item.title}</span>
               </Link>
             );
           })}
