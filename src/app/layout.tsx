@@ -107,7 +107,7 @@ export default function RootLayout({
         <main
           id="main-content"
           className={cn(
-            "flex relative break-words min-h-screen items-start justify-between pt-14 pb-8 px-5 md:px-10 lg:px-20 xl:px-40 max-sm:pt-20 max-lg:pb-24 overflow-x-hidden"
+            "flex relative break-words min-h-screen items-start justify-between pt-14 pb-8 px-5 md:px-10 lg:px-20 xl:px-40 max-sm:pt-16 max-lg:pb-24 overflow-x-hidden"
           )}
         >
           {/* NAVBAR ->  */}

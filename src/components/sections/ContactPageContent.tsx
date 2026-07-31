@@ -39,7 +39,7 @@ export default function ContactPageContent() {
     <div className="min-h-0 lg:min-h-screen w-full relative flex flex-col items-start gap-8 overflow-hidden">
       <PulseWaveBackground typing={typing} submitted={submitted} />
       <FramerWrapper y={0} x={-100} className="w-full">
-        <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
+        <h1 className="font-source-serif text-primary font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight [text-wrap:balance]">
           Get In Touch
         </h1>
         <div className="w-16 h-1 bg-primary-sky mt-4" />
