@@ -157,19 +157,27 @@ function Tooltip({ hovered }: { hovered: number | null }) {
 export default function NodeGraph() {
   const [hovered, setHovered] = useState<number | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const handleHover = useCallback((idx: number | null) => {
     setHovered(idx);
   }, []);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mqMotion.matches);
+    const mqDesktop = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(mqDesktop.matches);
+    const handlerDesktop = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mqDesktop.addEventListener("change", handlerDesktop);
+    return () => mqDesktop.removeEventListener("change", handlerDesktop);
   }, []);
+
+  const showStatic = prefersReducedMotion || !isDesktop;
 
   return (
     <div className="relative w-full h-[50vh] min-h-[350px]">
-      {prefersReducedMotion ? (
+      {showStatic ? (
         <div className="w-full h-full flex items-center justify-center">
           <div className="flex flex-wrap gap-3 justify-center max-w-md">
             {stack.map((tech) => (
