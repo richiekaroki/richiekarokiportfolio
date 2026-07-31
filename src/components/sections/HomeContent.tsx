@@ -162,6 +162,10 @@ export default function HomeContent() {
             Get in touch
           </Link>
         </FramerWrapper>
+
+        <FramerWrapper y={50} delay={0.25} className="w-full mt-8">
+          <Newsletter />
+        </FramerWrapper>
       </section>
     </div>
   );

@@ -4,11 +4,12 @@ import { useState } from "react";
 import ContactForm from "@/components/sections/ContactForm";
 import PulseWaveBackground from "@/components/backgrounds/PulseWaveBackground";
 import FramerWrapper from "@/components/animation/FramerWrapper";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Copy, Check } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 const methods = [
   {
@@ -34,6 +35,18 @@ const methods = [
 export default function ContactPageContent() {
   const [typing, setTyping] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("karokirichard522@gmail.com");
+      setEmailCopied(true);
+      toast.success("Email copied!", { description: "Paste it in your email client." });
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch {
+      toast.error("Failed to copy");
+    }
+  };
 
   return (
     <div className="min-h-0 lg:min-h-dvh w-full relative flex flex-col items-start gap-8 overflow-hidden">
@@ -57,22 +70,36 @@ export default function ContactPageContent() {
             </p>
             <div className="flex flex-col gap-4">
               {methods.map((method) => (
-                <Link
-                  key={method.label}
-                  href={method.href}
-                  target={method.href.startsWith("http") ? "_blank" : undefined}
-                  rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className={cn(
-                    buttonVariants({ variant: "outline" }),
-                    "justify-start gap-3 h-auto py-3 px-4 min-h-[44px] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-sky focus-visible:ring-offset-2"
+                <div key={method.label} className="flex gap-2">
+                  <Link
+                    href={method.href}
+                    target={method.href.startsWith("http") ? "_blank" : undefined}
+                    rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className={cn(
+                      buttonVariants({ variant: "outline" }),
+                      "flex-1 justify-start gap-3 h-auto py-3 px-4 min-h-[44px] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-sky focus-visible:ring-offset-2"
+                    )}
+                  >
+                    <span className="text-primary-sky">{method.icon}</span>
+                    <div className="flex flex-col items-start">
+                      <span className="text-[11px] sm:text-xs text-muted-foreground uppercase tracking-wide">{method.label}</span>
+                      <span className="text-sm font-medium text-foreground">{method.value}</span>
+                    </div>
+                  </Link>
+                  {method.label === "Email" && (
+                    <button
+                      onClick={copyEmail}
+                      aria-label="Copy email address"
+                      className="flex items-center justify-center w-11 min-w-[44px] min-h-[44px] rounded-md border border-border bg-secondary/50 hover:bg-accent active:scale-95 transition-all"
+                    >
+                      {emailCopied ? (
+                        <Check className="h-4 w-4 text-green-600" />
+                      ) : (
+                        <Copy className="h-4 w-4 text-muted-foreground" />
+                      )}
+                    </button>
                   )}
-                >
-                  <span className="text-primary-sky">{method.icon}</span>
-                  <div className="flex flex-col items-start">
-                    <span className="text-[11px] sm:text-xs text-muted-foreground uppercase tracking-wide">{method.label}</span>
-                    <span className="text-sm font-medium text-foreground">{method.value}</span>
-                  </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
