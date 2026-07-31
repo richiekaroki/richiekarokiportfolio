@@ -31,6 +31,24 @@ const subjects = [
   },
 ];
 
+const testimonials = [
+  {
+    name: "Faith Njeri",
+    role: "Junior Developer, Andela",
+    text: "I went from knowing zero JavaScript to building my first React app in 8 weeks. Richard explains things in a way that actually makes sense. He doesn't just teach code, he teaches you how to think like a developer.",
+  },
+  {
+    name: "Kevin Kipchoge",
+    role: "CS Student, UoN",
+    text: "My university courses were mostly theory. Richard showed me how to actually build things — real APIs, real databases, real deployment. I landed my first internship two months after starting sessions.",
+  },
+  {
+    name: "Cecilia Wambui",
+    role: "Career Switcher, ex-Banker",
+    text: "I was intimidated by coding at 32. Richard made it approachable. We started with Python basics and within three months I had built a full dashboard app. Now I'm working as a junior developer.",
+  },
+];
+
 const formatDetails = [
   { label: "Format", value: "1:1 sessions, online (or in-person if applicable)" },
   { label: "Level", value: "Beginner to early-intermediate" },
@@ -43,7 +61,7 @@ export default function TutoringPage() {
       <StructuredData page="tutoring" />
       <ThreeBackground />
       <FramerWrapper y={0} x={-100} className="w-full relative z-10">
-        <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
+        <h1 className="font-source-serif text-primary font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight [text-wrap:balance]">
           Learn to Code, 1:1 Tutoring
         </h1>
         <div className="w-16 h-1 bg-primary-sky mt-4" />
@@ -105,6 +123,28 @@ export default function TutoringPage() {
           not just a curriculum. I build production software every day, and what I teach
           comes from what actually works in the industry.
         </p>
+      </FramerWrapper>
+
+      {/* Testimonials */}
+      <FramerWrapper y={50} delay={0.3} className="w-full">
+        <h2 className="text-2xl font-source-serif text-primary font-semibold mb-4">
+          What Students Say
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {testimonials.map((t, idx) => (
+            <Card key={idx} className="transition-all hover:shadow-md">
+              <CardContent className="pt-6">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <div>
+                  <p className="text-sm font-medium text-primary">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.role}</p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </FramerWrapper>
 
       {/* CTA */}

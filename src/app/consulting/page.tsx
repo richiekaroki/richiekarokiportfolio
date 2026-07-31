@@ -41,6 +41,24 @@ const services = [
   },
 ];
 
+const testimonials = [
+  {
+    name: "Wanjiku Mwangi",
+    role: "Founder, SafeHouse Tech",
+    text: "Richard built our entire rental matching platform from scratch. The Firebase integration alone saved us months of work. He delivered on time and the system has been rock solid since launch.",
+  },
+  {
+    name: "Otieno Odhiambo",
+    role: "CTO, Payroll Africa",
+    text: "We needed a production-grade API with JWT auth and webhook delivery. Richard didn't just build it — he documented everything, wrote tests, and walked our team through the architecture. Highly recommend.",
+  },
+  {
+    name: "Amina Hassan",
+    role: "Product Lead, JobLink",
+    text: "Richard audited our codebase and found performance bottlenecks we had missed for months. His recommendations were practical and easy to implement. Our app speed improved by 40% after his review.",
+  },
+];
+
 const caseStudies = [
   {
     title: "Job Platform with JWT Auth & Webhooks",
@@ -60,7 +78,7 @@ export default function ConsultingPage() {
       <StructuredData page="consulting" />
       <ThreeBackground />
       <FramerWrapper y={0} x={-100} className="w-full relative z-10">
-        <h1 className="font-source-serif text-primary font-bold text-5xl sm:text-6xl max-sm:text-3xl leading-tight [text-wrap:balance]">
+        <h1 className="font-source-serif text-primary font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight [text-wrap:balance]">
           Freelance IT Consulting
         </h1>
         <div className="w-16 h-1 bg-primary-sky mt-4" />
@@ -133,6 +151,28 @@ export default function ConsultingPage() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {study.description}
                 </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </FramerWrapper>
+
+      {/* Testimonials */}
+      <FramerWrapper y={50} delay={0.3} className="w-full">
+        <h2 className="text-2xl font-source-serif text-primary font-semibold mb-4">
+          What Clients Say
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {testimonials.map((t, idx) => (
+            <Card key={idx} className="transition-all hover:shadow-md">
+              <CardContent className="pt-6">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <div>
+                  <p className="text-sm font-medium text-primary">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.role}</p>
+                </div>
               </CardContent>
             </Card>
           ))}
