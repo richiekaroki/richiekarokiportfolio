@@ -116,6 +116,29 @@ export default function StructuredData({ page = "home" }: StructuredDataProps) {
     });
   }
 
+  // Breadcrumb schema (sub-pages only)
+  if (page !== "home") {
+    const pageName = page.charAt(0).toUpperCase() + page.slice(1);
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteConfig.url,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: pageName,
+          item: `${siteConfig.url}/${page}`,
+        },
+      ],
+    });
+  }
+
   return (
     <script
       type="application/ld+json"
