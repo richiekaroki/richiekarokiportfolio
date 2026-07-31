@@ -123,7 +123,7 @@ export default function AboutContent() {
 
       <div className="relative z-10 w-full flex flex-1">
         {/* Content — left padding on lg+ to clear fixed sidebar */}
-        <div className="flex-1 flex flex-col gap-8 sm:gap-10 px-6 lg:pl-56 lg:pr-12 pt-4 pb-10 lg:pt-10">
+        <div className="flex-1 flex flex-col gap-8 sm:gap-10 px-6 lg:pl-56 lg:pr-12 pt-28 pb-10 lg:pt-10">
           <FramerWrapper y={0} x={-100} className="w-full">
             <h1 className="font-source-serif text-primary font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight [text-wrap:balance]">
               Software Engineer Based In Kenya.
