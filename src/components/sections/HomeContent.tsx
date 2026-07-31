@@ -8,6 +8,7 @@ import HeroContent from "@/components/sections/HeroContent";
 import HeroImage from "@/components/sections/HeroImage";
 import ScrambleButton from "@/components/animation/ScrambleButton";
 import FramerWrapper from "@/components/animation/FramerWrapper";
+import Newsletter from "@/components/ui/Newsletter";
 import TwoPathSplit from "@/components/sections/TwoPathSplit";
 import ProjectCard from "@/components/sections/ProjectCard";
 import dynamic from "next/dynamic";

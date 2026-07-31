@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 import { projects, getProjectBySlug } from "@/lib/projects";
 import FramerWrapper from "@/components/animation/FramerWrapper";
 import type { Metadata } from "next";
@@ -82,7 +83,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border bg-secondary/50 text-primary font-medium hover:bg-accent active:scale-[0.97] transition-all"
             >
-              <Github className="h-4 w-4" />
+              <SiGithub className="h-4 w-4" />
               Source Code
             </Link>
           )}
