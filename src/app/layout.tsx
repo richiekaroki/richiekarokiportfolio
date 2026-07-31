@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import PageTransition from "@/components/animation/PageTransition";
 import StructuredData from "@/components/seo/StructuredData";
 import DeferredAnalytics from "@/components/ui/DeferredAnalytics";
+import WebVitals from "@/components/ui/WebVitals";
 import { siteConfig } from "@/lib/config";
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -115,6 +116,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </main>
         <DeferredAnalytics />
+        <WebVitals />
       </body>
     </html>
   );
