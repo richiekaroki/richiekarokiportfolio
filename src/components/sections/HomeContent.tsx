@@ -15,6 +15,7 @@ const ParticleHero = dynamic(() => import("@/components/three/ParticleHero"), { 
 
 const featured = [
   {
+    slug: "job-application-api",
     title: "Job Application API",
     description:
       "Production grade Job Applications API built with NestJS, TypeScript, PostgreSQL and Redis. Features JWT auth with refresh token rotation, 4 role RBAC, webhook delivery with HMAC SHA256 signing, rate limiting, and full Swagger documentation.",
@@ -23,6 +24,7 @@ const featured = [
     repo: "https://github.com/richiekaroki/job-application-api",
   },
   {
+    slug: "broadcast-hub",
     title: "Broadcast Hub",
     description:
       "Media and Broadcast Content Management Platform built with NestJS and React. Full stack solution for managing broadcast content workflows with a modern TypeScript stack.",
@@ -31,6 +33,7 @@ const featured = [
     repo: "https://github.com/richiekaroki/broadcast-hub",
   },
   {
+    slug: "actserv-onboarding",
     title: "Actserv Onboarding Platform",
     description:
       "Enterprise onboarding platform built with TypeScript. Streamlines the employee onboarding journey with a clean, production ready interface.",
@@ -38,6 +41,7 @@ const featured = [
     link: "https://onboarding-frontend.vercel.app/",
   },
   {
+    slug: "zoo-app",
     title: "Zoo App",
     description:
       "An interactive zoo management application built with Vue.js. Features animal browsing, categorization, and a clean responsive interface.",

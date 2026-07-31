@@ -14,6 +14,7 @@ import { SiGithub } from "react-icons/si";
 
 interface ProjectCardProps {
   value: {
+    slug?: string;
     title: string;
     description: string;
     tags: string[];
@@ -25,6 +26,8 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
+  const titleLink = value.slug ? `/projects/${value.slug}` : value.link;
+
   return (
     <FramerWrapper
       className={cn("w-full", featured && "md:col-span-2")}
@@ -41,7 +44,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
       >
         <CardHeader className={cn("pb-2", featured && "md:w-1/2 md:pb-2 md:pl-6")}>
           <CardTitle className="text-xl font-bold text-primary">
-            {value.title}
+            {value.slug ? (
+              <Link href={titleLink} className="hover:text-primary-sky transition-colors">
+                {value.title}
+              </Link>
+            ) : (
+              value.title
+            )}
           </CardTitle>
         </CardHeader>
 
@@ -86,9 +95,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
             </Link>
           ) : null}
           <Link
-            href={value.link}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={value.slug ? titleLink : value.link}
+            target={value.slug ? undefined : "_blank"}
+            rel={value.slug ? undefined : "noopener noreferrer"}
             className={cn(
               buttonVariants({
                 variant: "default",
@@ -97,7 +106,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
               "w-fit transition-all hover:translate-y-[-2px] hover:shadow-md active:scale-95 group"
             )}
           >
-            Visit Project
+            {value.slug ? "View Case Study" : "Visit Project"}
             <ArrowUpRight className="h-4 w-4 ml-1 hidden group-hover:block -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
           </Link>
         </CardFooter>

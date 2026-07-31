@@ -11,6 +11,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const featured = [
   {
+    slug: "job-application-api",
     title: "Job Application API",
     description:
       "Production grade Job Applications API built with NestJS, TypeScript, PostgreSQL and Redis. Features JWT auth with refresh token rotation, 4 role RBAC, webhook delivery with HMAC SHA256 signing, rate limiting, and full Swagger documentation.",
@@ -19,6 +20,7 @@ const featured = [
     repo: "https://github.com/richiekaroki/job-application-api",
   },
   {
+    slug: "broadcast-hub",
     title: "Broadcast Hub",
     description:
       "Media and Broadcast Content Management Platform built with NestJS and React. Full stack solution for managing broadcast content workflows with a modern TypeScript stack.",
@@ -27,6 +29,7 @@ const featured = [
     repo: "https://github.com/richiekaroki/broadcast-hub",
   },
   {
+    slug: "actserv-onboarding",
     title: "Actserv Onboarding Platform",
     description:
       "Enterprise onboarding platform built with TypeScript. Streamlines the employee onboarding journey with a clean, production ready interface.",
@@ -34,6 +37,7 @@ const featured = [
     link: "https://onboarding-frontend.vercel.app/",
   },
   {
+    slug: "product-dashboard",
     title: "Product Dashboard",
     description:
       "A real time product analytics dashboard built with TypeScript and React. Visualizes key metrics and performance data with responsive charts and tables.",
@@ -41,6 +45,7 @@ const featured = [
     link: "https://product-dashboard-nine-kappa.vercel.app/",
   },
   {
+    slug: "zoo-app",
     title: "Zoo App",
     description:
       "An interactive zoo management application built with Vue.js. Features animal browsing, categorization, and a clean responsive interface.",
@@ -51,6 +56,7 @@ const featured = [
 
 const more = [
   {
+    slug: "solami-sportsbook",
     title: "Solami Sportsbook Landing",
     description:
       "Sportsbook landing page demo built with SvelteKit, TypeScript, and Tailwind CSS. Features real time bet slip state management, derived odds calculations, and responsive design.",
@@ -58,6 +64,7 @@ const more = [
     link: "https://solami-sportsbook-landing.vercel.app",
   },
   {
+    slug: "court-case-app",
     title: "Court Case App",
     description:
       "A court case management application built with TypeScript. Tracks and organizes legal case data with a clean, functional interface.",
@@ -66,6 +73,7 @@ const more = [
     repo: "https://github.com/richiekaroki/court-case-app",
   },
   {
+    slug: "livestock-demo",
     title: "Livestock Demo",
     description:
       "A livestock management demo application built with TypeScript. Demonstrates full stack capabilities with a focus on data modeling and UI.",
