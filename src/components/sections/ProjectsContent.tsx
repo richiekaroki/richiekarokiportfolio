@@ -89,6 +89,7 @@ export default function ProjectsContent() {
             alt="Richard Karoki, Work"
             fill
             priority
+            placeholder="blur"
             className="object-cover"
             sizes="100vw"
           />

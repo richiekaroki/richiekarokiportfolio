@@ -154,6 +154,7 @@ export default function AboutContent() {
                     src={richie1}
                     alt="Richard Karoki at work"
                     fill
+                    placeholder="blur"
                     className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
                     sizes="(max-width: 640px) 100vw, 320px"
                     priority
@@ -169,6 +170,7 @@ export default function AboutContent() {
                     src={richie2}
                     alt="Richard Karoki portrait"
                     fill
+                    placeholder="blur"
                     className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
                     sizes="(max-width: 640px) 100vw, 320px"
                   />

@@ -10,6 +10,7 @@ const HeroImage = () => {
           alt="Richard Karoki, Software Engineer and Designer"
           priority
           fill
+          placeholder="blur"
           className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
           sizes="(max-width: 640px) 260px, (max-width: 720px) 280px, (max-width: 976px) 310px, 340px"
         />
