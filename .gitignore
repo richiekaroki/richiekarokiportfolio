@@ -89,11 +89,4 @@ __pycache__/
 out/
 .vercel
 
-# ==================== SCREENSHOTS (testing artifacts) ====================
-*.png
-*.jpeg
-*.jpg
-!public/*.jpg
-!public/screenshots/*.png
-!src/assets/*.jpg
-!src/assets/*.png
+
