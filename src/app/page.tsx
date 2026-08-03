@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import FramerWrapper from "@/components/animation/FramerWrapper";
 import HomeContent from "@/components/sections/HomeContent";
 
 export const metadata: Metadata = {

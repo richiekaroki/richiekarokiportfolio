@@ -1,7 +1,5 @@
 "use client";
 
-import LazyLoad from "@/components/ui/LazyLoad";
-
 const stars = Array.from({ length: 40 }).map((_, i) => ({
   id: i,
   x: Math.random() * 100,
