@@ -62,6 +62,7 @@ export const projects: Project[] = [
       "An enterprise-grade employee onboarding platform that streamlines the journey from offer letter to fully productive team member. Built with TypeScript and React, it handles document collection, task tracking, and progress monitoring.",
     tags: ["TypeScript", "React", "Enterprise", "Frontend"],
     link: "https://onboarding-frontend.vercel.app/",
+    repo: "https://github.com/richiekaroki/actserv-onboarding-platform",
     challenges: [
       "Building a multi-step onboarding flow that adapts to different employee roles and departments",
       "Implementing document upload with validation and status tracking",
@@ -82,6 +83,7 @@ export const projects: Project[] = [
       "A real-time product analytics dashboard that visualizes key metrics and performance data. Built with TypeScript and React, it provides responsive charts, tables, and filtering capabilities for data-driven decision making.",
     tags: ["TypeScript", "React", "Analytics", "Dashboard"],
     link: "https://product-dashboard-nine-kappa.vercel.app/",
+    repo: "https://github.com/richiekaroki/product-dashboard",
     challenges: [
       "Rendering large datasets without blocking the main thread",
       "Building responsive charts that work across all screen sizes",
@@ -102,6 +104,7 @@ export const projects: Project[] = [
       "An interactive zoo management application built with Vue.js. Features animal browsing, categorization, and a clean responsive interface for managing and exploring zoo information.",
     tags: ["Vue", "JavaScript", "Responsive"],
     link: "https://zoo-app-nu.vercel.app",
+    repo: "https://github.com/richiekaroki/zoo-app",
     challenges: [
       "Building a responsive interface that works well on both desktop and mobile",
       "Implementing smooth animal browsing with filtering and categorization",
@@ -115,13 +118,14 @@ export const projects: Project[] = [
   },
   {
     slug: "solami-sportsbook",
-    title: "Solami Sportsbook Landing",
+    title: "WAM Sportsbook Landing",
     description:
       "Sportsbook landing page demo built with SvelteKit, TypeScript, and Tailwind CSS.",
     longDescription:
       "A sportsbook landing page demo built with SvelteKit, TypeScript, and Tailwind CSS. Features real-time bet slip state management, derived odds calculations, and responsive design for the sports betting industry.",
     tags: ["SvelteKit", "TypeScript", "Tailwind CSS", "State Management"],
-    link: "https://solami-sportsbook-landing.vercel.app",
+    link: "https://wam-sportsbook-landing.vercel.app/",
+    repo: "https://github.com/richiekaroki/wam-sportsbook-landing",
     challenges: [
       "Implementing real-time bet slip state that stays in sync across components",
       "Building derived odds calculations that update instantly as selections change",
