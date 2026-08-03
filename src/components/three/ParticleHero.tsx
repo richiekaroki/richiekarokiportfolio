@@ -105,7 +105,7 @@ export default function ParticleHero({ hoveredCta }: { hoveredCta?: React.RefObj
   const containerRef = useRef<HTMLDivElement>(null);
   const [morphed, setMorphed] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
   const scrollProgress = useRef(0);
   const defaultHoveredCta = useRef(null);
   const ctaRef = hoveredCta ?? defaultHoveredCta;
@@ -120,7 +120,7 @@ export default function ParticleHero({ hoveredCta }: { hoveredCta?: React.RefObj
   }, []);
 
   useEffect(() => {
-    if (!mounted || !isDesktop) return;
+    if (!mounted) return;
     const el = containerRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -132,14 +132,16 @@ export default function ParticleHero({ hoveredCta }: { hoveredCta?: React.RefObj
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [mounted, isDesktop]);
+  }, [mounted]);
 
-  if (!mounted || !isDesktop) return null;
+  if (!mounted) return null;
+
+  const particleCount = isDesktop ? 2200 : 600;
 
   return (
     <div ref={containerRef} style={{ position: "relative", width: "100%", height: "100%" }}>
       <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
-        <ParticleField morphed={morphed} count={2200} scrollProgress={scrollProgress} hoveredCta={ctaRef} />
+        <ParticleField morphed={morphed} count={particleCount} scrollProgress={scrollProgress} hoveredCta={ctaRef} />
       </Canvas>
     </div>
   );

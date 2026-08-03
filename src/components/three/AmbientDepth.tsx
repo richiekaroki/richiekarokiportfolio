@@ -127,20 +127,14 @@ function FloatingShapes({ section }: { section: string }) {
 export default function AmbientDepth({ section = "bio" }: { section?: string }) {
   const [mounted, setMounted] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mqMotion.matches);
-    const mqDesktop = window.matchMedia("(min-width: 1024px)");
-    setIsDesktop(mqDesktop.matches);
-    const handlerDesktop = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mqDesktop.addEventListener("change", handlerDesktop);
     setMounted(true);
-    return () => mqDesktop.removeEventListener("change", handlerDesktop);
   }, []);
 
-  if (!mounted || prefersReducedMotion || !isDesktop) return null;
+  if (!mounted || prefersReducedMotion) return null;
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none">

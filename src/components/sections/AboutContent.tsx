@@ -112,7 +112,7 @@ export default function AboutContent() {
       <AmbientDepth section={activeSection} />
 
       {/* Mobile nav (horizontal tabs) */}
-      <div className="lg:hidden relative z-20">
+      <div className="lg:hidden sticky top-16 z-20 w-full">
         <SectionNav items={navItems} activeSection={activeSection} />
       </div>
 
