@@ -39,7 +39,7 @@ const SectionNav = ({ items, activeSection }: SectionNavProps) => {
       {/* Mobile: horizontal scrollable tabs */}
       <nav
         aria-label="About page sections"
-        className="lg:hidden sticky top-16 z-20 w-full bg-background/80 backdrop-blur-md border-b border-border/50 scroll-hint"
+        className="lg:hidden fixed top-16 left-0 right-0 z-20 bg-background/80 backdrop-blur-md border-b border-border/50"
       >
         <div className="flex gap-1 overflow-x-auto no-scrollbar px-6 py-2">
           {items.map((item) => (
