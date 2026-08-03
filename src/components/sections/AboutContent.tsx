@@ -108,18 +108,10 @@ export default function AboutContent() {
   }, []);
 
   return (
-    <div className="min-h-0 lg:min-h-dvh w-full relative flex flex-col overflow-x-hidden">
+    <div className="min-h-0 lg:min-h-dvh w-full relative flex flex-col">
       <AmbientDepth section={activeSection} />
 
-      {/* Mobile nav (horizontal tabs) */}
-      <div className="lg:hidden relative z-20">
-        <SectionNav items={navItems} activeSection={activeSection} />
-      </div>
-
-      {/* Desktop sidebar (fixed, outside flow) */}
-      <div className="hidden lg:block">
-        <SectionNav items={navItems} activeSection={activeSection} />
-      </div>
+      <SectionNav items={navItems} activeSection={activeSection} />
 
       <div className="relative z-10 w-full flex flex-1">
         {/* Content — left padding on lg+ to clear fixed sidebar */}
