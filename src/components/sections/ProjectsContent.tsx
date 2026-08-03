@@ -8,89 +8,15 @@ import work1 from "@/assets/work-1.png";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { projects } from "@/lib/projects";
 
-const featured = [
-  {
-    slug: "job-application-api",
-    title: "Job Application API",
-    description:
-      "Production grade Job Applications API built with NestJS, TypeScript, PostgreSQL and Redis. Features JWT auth with refresh token rotation, 4 role RBAC, webhook delivery with HMAC SHA256 signing, rate limiting, and full Swagger documentation.",
-    tags: ["NestJS", "TypeScript", "PostgreSQL", "Redis", "JWT"],
-    link: "https://job-application-api-17rf.onrender.com/api/v1/docs",
-    repo: "https://github.com/richiekaroki/job-application-api",
-  },
-  {
-    slug: "broadcast-hub",
-    title: "Broadcast Hub",
-    description:
-      "Media and Broadcast Content Management Platform built with NestJS and React. Full stack solution for managing broadcast content workflows with a modern TypeScript stack.",
-    tags: ["NestJS", "React", "TypeScript", "Full Stack"],
-    link: "https://broadcast-hub-web.vercel.app/",
-    repo: "https://github.com/richiekaroki/broadcast-hub",
-    image: "/screenshots/broadcast-hub.png",
-  },
-  {
-    slug: "actserv-onboarding",
-    title: "Actserv Onboarding Platform",
-    description:
-      "Enterprise onboarding platform built with TypeScript. Streamlines the employee onboarding journey with a clean, production ready interface.",
-    tags: ["TypeScript", "React", "Enterprise", "Frontend"],
-    link: "https://onboarding-frontend.vercel.app/",
-    repo: "https://github.com/richiekaroki/actserv-onboarding-platform",
-    image: "/screenshots/actserv-onboarding.png",
-  },
-  {
-    slug: "product-dashboard",
-    title: "Product Dashboard",
-    description:
-      "A real time product analytics dashboard built with TypeScript and React. Visualizes key metrics and performance data with responsive charts and tables.",
-    tags: ["TypeScript", "React", "Analytics", "Dashboard"],
-    link: "https://product-dashboard-nine-kappa.vercel.app/",
-    repo: "https://github.com/richiekaroki/product-dashboard",
-    image: "/screenshots/product-dashboard.png",
-  },
-  {
-    slug: "zoo-app",
-    title: "Zoo App",
-    description:
-      "An interactive zoo management application built with Vue.js. Features animal browsing, categorization, and a clean responsive interface.",
-    tags: ["Vue", "JavaScript", "Responsive"],
-    link: "https://zoo-app-nu.vercel.app",
-    repo: "https://github.com/richiekaroki/zoo-app",
-    image: "/screenshots/zoo-app.png",
-  },
-];
+const featured = projects.filter(p =>
+  ["job-application-api", "broadcast-hub", "actserv-onboarding", "product-dashboard", "zoo-app"].includes(p.slug)
+);
 
-const more = [
-  {
-    slug: "solami-sportsbook",
-    title: "WAM Sportsbook Landing",
-    description:
-      "Sportsbook landing page demo built with SvelteKit, TypeScript, and Tailwind CSS. Features real time bet slip state management, derived odds calculations, and responsive design.",
-    tags: ["SvelteKit", "TypeScript", "Tailwind CSS", "State Management"],
-    link: "https://wam-sportsbook-landing.vercel.app/",
-    repo: "https://github.com/richiekaroki/wam-sportsbook-landing",
-    image: "/screenshots/wam-sportsbook.png",
-  },
-  {
-    slug: "court-case-app",
-    title: "Court Case App",
-    description:
-      "A court case management application built with TypeScript. Tracks and organizes legal case data with a clean, functional interface.",
-    tags: ["TypeScript", "React", "Legal Tech"],
-    link: "https://github.com/richiekaroki/court-case-app",
-    repo: "https://github.com/richiekaroki/court-case-app",
-  },
-  {
-    slug: "livestock-demo",
-    title: "Livestock Demo",
-    description:
-      "A livestock management demo application built with TypeScript. Demonstrates full stack capabilities with a focus on data modeling and UI.",
-    tags: ["TypeScript", "Full Stack", "Agritech"],
-    link: "https://github.com/richiekaroki/livestock-demo",
-    repo: "https://github.com/richiekaroki/livestock-demo",
-  },
-];
+const more = projects.filter(p =>
+  ["solami-sportsbook", "court-case-app", "livestock-demo"].includes(p.slug)
+);
 
 export default function ProjectsContent() {
   const [showAll, setShowAll] = useState(false);

@@ -10,45 +10,13 @@ import ScrambleButton from "@/components/animation/ScrambleButton";
 import FramerWrapper from "@/components/animation/FramerWrapper";
 import TwoPathSplit from "@/components/sections/TwoPathSplit";
 import ProjectCard from "@/components/sections/ProjectCard";
+import { projects } from "@/lib/projects";
 import dynamic from "next/dynamic";
 const ParticleHero = dynamic(() => import("@/components/three/ParticleHero"), { ssr: false });
 
-const featured = [
-  {
-    slug: "job-application-api",
-    title: "Job Application API",
-    description:
-      "Production grade Job Applications API built with NestJS, TypeScript, PostgreSQL and Redis. Features JWT auth with refresh token rotation, 4 role RBAC, webhook delivery with HMAC SHA256 signing, rate limiting, and full Swagger documentation.",
-    tags: ["NestJS", "TypeScript", "PostgreSQL", "Redis", "JWT"],
-    link: "https://job-application-api-production.up.railway.app/api/v1/docs",
-    repo: "https://github.com/richiekaroki/job-application-api",
-  },
-  {
-    slug: "broadcast-hub",
-    title: "Broadcast Hub",
-    description:
-      "Media and Broadcast Content Management Platform built with NestJS and React. Full stack solution for managing broadcast content workflows with a modern TypeScript stack.",
-    tags: ["NestJS", "React", "TypeScript", "Full Stack"],
-    link: "https://broadcast-hub-web.vercel.app/",
-    repo: "https://github.com/richiekaroki/broadcast-hub",
-  },
-  {
-    slug: "actserv-onboarding",
-    title: "Actserv Onboarding Platform",
-    description:
-      "Enterprise onboarding platform built with TypeScript. Streamlines the employee onboarding journey with a clean, production ready interface.",
-    tags: ["TypeScript", "React", "Enterprise", "Frontend"],
-    link: "https://onboarding-frontend.vercel.app/",
-  },
-  {
-    slug: "zoo-app",
-    title: "Zoo App",
-    description:
-      "An interactive zoo management application built with Vue.js. Features animal browsing, categorization, and a clean responsive interface.",
-    tags: ["Vue", "JavaScript", "Responsive"],
-    link: "https://zoo-app-nu.vercel.app",
-  },
-];
+const featured = projects.filter(p =>
+  ["job-application-api", "broadcast-hub", "actserv-onboarding", "zoo-app"].includes(p.slug)
+);
 
 const services = [
   {
