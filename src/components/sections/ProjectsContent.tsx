@@ -35,6 +35,7 @@ const featured = [
       "Enterprise onboarding platform built with TypeScript. Streamlines the employee onboarding journey with a clean, production ready interface.",
     tags: ["TypeScript", "React", "Enterprise", "Frontend"],
     link: "https://onboarding-frontend.vercel.app/",
+    repo: "https://github.com/richiekaroki/actserv-onboarding-platform",
   },
   {
     slug: "product-dashboard",
@@ -43,6 +44,7 @@ const featured = [
       "A real time product analytics dashboard built with TypeScript and React. Visualizes key metrics and performance data with responsive charts and tables.",
     tags: ["TypeScript", "React", "Analytics", "Dashboard"],
     link: "https://product-dashboard-nine-kappa.vercel.app/",
+    repo: "https://github.com/richiekaroki/product-dashboard",
   },
   {
     slug: "zoo-app",
@@ -51,17 +53,19 @@ const featured = [
       "An interactive zoo management application built with Vue.js. Features animal browsing, categorization, and a clean responsive interface.",
     tags: ["Vue", "JavaScript", "Responsive"],
     link: "https://zoo-app-nu.vercel.app",
+    repo: "https://github.com/richiekaroki/zoo-app",
   },
 ];
 
 const more = [
   {
     slug: "solami-sportsbook",
-    title: "Solami Sportsbook Landing",
+    title: "WAM Sportsbook Landing",
     description:
       "Sportsbook landing page demo built with SvelteKit, TypeScript, and Tailwind CSS. Features real time bet slip state management, derived odds calculations, and responsive design.",
     tags: ["SvelteKit", "TypeScript", "Tailwind CSS", "State Management"],
-    link: "https://solami-sportsbook-landing.vercel.app",
+    link: "https://wam-sportsbook-landing.vercel.app/",
+    repo: "https://github.com/richiekaroki/wam-sportsbook-landing",
   },
   {
     slug: "court-case-app",
