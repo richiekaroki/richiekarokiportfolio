@@ -105,7 +105,7 @@ export default function ProjectsContent() {
       </FramerWrapper>
 
       <FramerWrapper y={50} delay={0.15} className="w-full">
-        <p className="font-inter text-lg w-full text-muted-foreground max-sm:text-base max-w-2xl leading-relaxed">
+        <p className="font-inter text-lg w-full text-muted-foreground max-sm:text-base max-w-prose leading-relaxed">
           A curated collection of creative endeavors and technical projects.
           Each piece represents a journey of innovation, problem solving, and
           continuous learning.

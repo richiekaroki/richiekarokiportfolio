@@ -5,6 +5,7 @@ import {
   HomeIcon,
   Mail,
   User,
+  FolderGit2,
 } from 'lucide-react';
 
 import { Dock, DockIcon, DockItem, DockLabel } from '@/components/animation/DockAnimation';
@@ -24,6 +25,11 @@ const data = [
     title: 'About',
     icon: <User className='h-full w-full' />,
     href: '/about',
+  },
+  {
+    title: 'Projects',
+    icon: <FolderGit2 className='h-full w-full' />,
+    href: '/projects',
   },
   {
     title: 'Contact',
@@ -47,7 +53,7 @@ const Navbar = () => {
         </Link>
         <Dock className='items-end pb-3 rounded-full'>
           {data.map((item, idx) => (
-            <Link href={item.href} key={idx} aria-label={item.title}>
+              <Link href={item.href} key={idx} aria-label={item.title} aria-current={pathname === item.href ? "page" : undefined}>
               <DockItem
                 className={cn(
                   "aspect-square rounded-full bg-secondary",
@@ -81,15 +87,16 @@ const Navbar = () => {
                 key={item.href}
                 href={item.href}
                 aria-label={item.title}
+                aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] rounded-lg px-3 py-1.5 transition-colors",
+                  "flex flex-col items-center justify-center gap-1 min-w-[44px] min-h-[44px] rounded-lg px-3 py-1.5 transition-colors",
                   isActive
                     ? "text-primary-sky"
                     : "text-muted-foreground active:text-primary"
                 )}
               >
                 <span className="w-5 h-5">{item.icon}</span>
-                <span className="text-[11px] font-medium leading-none">{item.title}</span>
+                <span className="text-xs font-medium leading-none">{item.title}</span>
               </Link>
             );
           })}

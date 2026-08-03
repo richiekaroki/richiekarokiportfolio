@@ -3,6 +3,7 @@
 import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { THEME_COLORS } from "@/lib/theme-colors";
 
 const STAR_COUNT = 120;
 const CONNECTION_DISTANCE = 2.2;
@@ -44,7 +45,7 @@ function Stars({ positions }: { positions: Float32Array }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        color="#d97706"
+        color={THEME_COLORS.amber}
         size={0.06}
         transparent
         opacity={0.9}
@@ -93,7 +94,7 @@ function Connections({ positions }: { positions: Float32Array }) {
         />
       </bufferGeometry>
       <lineBasicMaterial
-        color="#3b82f6"
+        color={THEME_COLORS.blue}
         transparent
         opacity={0.15}
       />

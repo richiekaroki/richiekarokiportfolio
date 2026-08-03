@@ -49,7 +49,7 @@ const languages = [
 
 const frontend = [
   { name: "React", icon: <SiReact className="text-[#61DAFB]" /> },
-  { name: "Next.js", icon: <SiNextdotjs /> },
+  { name: "Next.js", icon: <SiNextdotjs className="text-[#000000] dark:text-[#FFFFFF]" /> },
   { name: "Vue.js", icon: <SiVuedotjs className="text-[#4FC08D]" /> },
   { name: "Svelte", icon: <SiSvelte className="text-[#FF3E00]" /> },
   { name: "HTML5", icon: <SiHtml5 className="text-[#E34F26]" /> },
@@ -216,7 +216,7 @@ export default function AboutContent() {
                 {languages.map((skill, idx) => (
                   <div key={idx} className="flex flex-col items-center gap-2 p-3 rounded-lg bg-secondary/50">
                     <span className="text-2xl">{skill.icon}</span>
-                    <span className="text-[11px] sm:text-xs text-muted-foreground text-center">{skill.name}</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground text-center">{skill.name}</span>
                   </div>
                 ))}
               </div>
@@ -228,7 +228,7 @@ export default function AboutContent() {
                 {frontend.map((skill, idx) => (
                   <div key={idx} className="flex flex-col items-center gap-2 p-3 rounded-lg bg-secondary/50">
                     <span className="text-2xl">{skill.icon}</span>
-                    <span className="text-[11px] sm:text-xs text-muted-foreground text-center">{skill.name}</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground text-center">{skill.name}</span>
                   </div>
                 ))}
               </div>
@@ -240,7 +240,7 @@ export default function AboutContent() {
                 {backend.map((skill, idx) => (
                   <div key={idx} className="flex flex-col items-center gap-2 p-3 rounded-lg bg-secondary/50">
                     <span className="text-2xl">{skill.icon}</span>
-                    <span className="text-[11px] sm:text-xs text-muted-foreground text-center">{skill.name}</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground text-center">{skill.name}</span>
                   </div>
                 ))}
               </div>
@@ -252,7 +252,7 @@ export default function AboutContent() {
                 {database.map((skill, idx) => (
                   <div key={idx} className="flex flex-col items-center gap-2 p-3 rounded-lg bg-secondary/50">
                     <span className="text-2xl">{skill.icon}</span>
-                    <span className="text-[11px] sm:text-xs text-muted-foreground text-center">{skill.name}</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground text-center">{skill.name}</span>
                   </div>
                 ))}
               </div>
@@ -264,7 +264,7 @@ export default function AboutContent() {
                 {tools.map((skill, idx) => (
                   <div key={idx} className="flex flex-col items-center gap-2 p-3 rounded-lg bg-secondary/50">
                     <span className="text-2xl">{skill.icon}</span>
-                    <span className="text-[11px] sm:text-xs text-muted-foreground text-center">{skill.name}</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground text-center">{skill.name}</span>
                   </div>
                 ))}
               </div>

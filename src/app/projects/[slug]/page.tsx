@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </FramerWrapper>
 
       <FramerWrapper y={50} delay={0.1} className="w-full">
-        <p className="font-inter text-lg text-muted-foreground max-sm:text-base max-w-2xl leading-relaxed">
+        <p className="font-inter text-lg text-muted-foreground max-sm:text-base max-w-prose leading-relaxed">
           {project.longDescription}
         </p>
       </FramerWrapper>
@@ -113,7 +113,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <ul className="space-y-3">
           {project.outcomes.map((outcome, i) => (
             <li key={i} className="flex gap-3 text-muted-foreground leading-relaxed">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-bold flex items-center justify-center mt-0.5">
+              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-bold flex items-center justify-center mt-0.5" aria-hidden="true">
                 ✓
               </span>
               {outcome}

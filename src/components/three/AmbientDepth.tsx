@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+import { THEME_COLORS } from "@/lib/theme-colors";
 
 const speedMap: Record<string, number> = {
   bio: 1,
@@ -13,7 +14,17 @@ const speedMap: Record<string, number> = {
   writing: 0.9,
 };
 
-const COLORS = [0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706, 0x3b82f6, 0xd97706];
+const COLORS = [
+  parseInt(THEME_COLORS.amber.replace("#", ""), 16),
+  parseInt(THEME_COLORS.blue.replace("#", ""), 16),
+  parseInt(THEME_COLORS.amber.replace("#", ""), 16),
+  parseInt(THEME_COLORS.blue.replace("#", ""), 16),
+  parseInt(THEME_COLORS.amber.replace("#", ""), 16),
+  parseInt(THEME_COLORS.blue.replace("#", ""), 16),
+  parseInt(THEME_COLORS.amber.replace("#", ""), 16),
+  parseInt(THEME_COLORS.blue.replace("#", ""), 16),
+  parseInt(THEME_COLORS.amber.replace("#", ""), 16),
+];
 
 interface ShapeData {
   mesh: THREE.Mesh;
@@ -115,18 +126,27 @@ function FloatingShapes({ section }: { section: string }) {
 
 export default function AmbientDepth({ section = "bio" }: { section?: string }) {
   const [mounted, setMounted] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mqMotion.matches);
+    const mqDesktop = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(mqDesktop.matches);
+    const handlerDesktop = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mqDesktop.addEventListener("change", handlerDesktop);
     setMounted(true);
+    return () => mqDesktop.removeEventListener("change", handlerDesktop);
   }, []);
+
+  if (!mounted || prefersReducedMotion || !isDesktop) return null;
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none">
-      {mounted && (
-        <Canvas camera={{ position: [0, 0, 10], fov: 55 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
-          <FloatingShapes section={section} />
-        </Canvas>
-      )}
+      <Canvas camera={{ position: [0, 0, 10], fov: 55 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
+        <FloatingShapes section={section} />
+      </Canvas>
     </div>
   );
 }

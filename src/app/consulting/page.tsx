@@ -85,7 +85,7 @@ export default function ConsultingPage() {
       </FramerWrapper>
 
       <FramerWrapper y={50} delay={0.1} className="w-full">
-        <p className="font-inter text-lg text-muted-foreground max-sm:text-base max-w-2xl leading-relaxed">
+        <p className="font-inter text-lg text-muted-foreground max-sm:text-base max-w-prose leading-relaxed">
           Practical, production-grade software built by someone who ships.
           Whether you need a full-stack build, an API integrated, or your infrastructure
           sorted, I deliver real results.

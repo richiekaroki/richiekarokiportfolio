@@ -107,14 +107,13 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <Navbar />
         <main
           id="main-content"
           className={cn(
             "flex relative break-words min-h-0 lg:min-h-dvh items-start justify-between pt-14 pb-8 px-5 md:px-10 lg:px-20 xl:px-40 max-sm:pt-16 max-lg:pb-24 overflow-x-hidden"
           )}
         >
-          {/* NAVBAR ->  */}
-          <Navbar />
           <PageTransition>{children}</PageTransition>
         </main>
         <DeferredAnalytics />

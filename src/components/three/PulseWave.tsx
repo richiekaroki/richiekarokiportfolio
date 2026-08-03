@@ -3,6 +3,7 @@
 import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { THEME_COLORS } from "@/lib/theme-colors";
 
 function PulseRing({ delay, color, speed }: { delay: number; color: string; speed: number }) {
   const ref = useRef<THREE.Mesh>(null!);
@@ -36,20 +37,20 @@ function PulseWaveScene({ typing, submitted }: { typing?: boolean; submitted?: b
 
   const rings = useMemo(
     () => [
-      { delay: 0, color: "#d97706" },
-      { delay: 1, color: "#3b82f6" },
-      { delay: 2, color: "#d97706" },
-      { delay: 3, color: "#3b82f6" },
+      { delay: 0, color: THEME_COLORS.amber },
+      { delay: 1, color: THEME_COLORS.blue },
+      { delay: 2, color: THEME_COLORS.amber },
+      { delay: 3, color: THEME_COLORS.blue },
     ],
     []
   );
 
   const burstRings = useMemo(
     () => [
-      { delay: 0, color: "#3b82f6" },
-      { delay: 0.3, color: "#d97706" },
-      { delay: 0.6, color: "#3b82f6" },
-      { delay: 0.9, color: "#d97706" },
+      { delay: 0, color: THEME_COLORS.blue },
+      { delay: 0.3, color: THEME_COLORS.amber },
+      { delay: 0.6, color: THEME_COLORS.blue },
+      { delay: 0.9, color: THEME_COLORS.amber },
     ],
     []
   );

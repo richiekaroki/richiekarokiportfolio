@@ -3,6 +3,7 @@
 import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { THEME_COLORS } from "@/lib/theme-colors";
 
 function scatterPositions(n: number) {
   const arr = new Float32Array(n * 3);
@@ -95,7 +96,7 @@ function ParticleField({ morphed, count, scrollProgress, hoveredCta }: { morphed
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[current, 3]} />
       </bufferGeometry>
-      <pointsMaterial color="#d97706" size={0.08} transparent opacity={1} sizeAttenuation />
+      <pointsMaterial color={THEME_COLORS.amber} size={0.08} transparent opacity={1} sizeAttenuation />
     </points>
   );
 }

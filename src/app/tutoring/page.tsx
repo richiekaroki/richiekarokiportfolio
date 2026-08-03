@@ -68,7 +68,7 @@ export default function TutoringPage() {
       </FramerWrapper>
 
       <FramerWrapper y={50} delay={0.1} className="w-full">
-        <p className="font-inter text-lg text-muted-foreground max-sm:text-base max-w-2xl leading-relaxed">
+        <p className="font-inter text-lg text-muted-foreground max-sm:text-base max-w-prose leading-relaxed">
           Practical, project-based programming fundamentals, taught by a working
           software engineer. Not just a curriculum, real practice from real experience.
         </p>

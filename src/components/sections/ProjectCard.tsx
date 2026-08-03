@@ -43,7 +43,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
         )}
       >
         <CardHeader className={cn("pb-2", featured && "md:w-1/2 md:pb-2 md:pl-6")}>
-          <CardTitle className="text-xl font-bold text-primary">
+          <CardTitle as="h2" className="text-xl font-bold text-primary">
             {value.slug ? (
               <Link href={titleLink} className="hover:text-primary-sky transition-colors">
                 {value.title}

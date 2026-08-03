@@ -3,6 +3,7 @@
 import { useRef, useMemo, useState, useEffect, useCallback } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+import { THEME_COLORS } from "@/lib/theme-colors";
 
 const stack = [
   "Next.js", "React", "Python", "Flask", "Node.js",
@@ -28,14 +29,14 @@ function Nodes({ onHover }: { onHover: (idx: number | null) => void }) {
       const z = R * Math.cos(phi);
 
       const geo = new THREE.SphereGeometry(0.18, 16, 16);
-      const mat = new THREE.MeshBasicMaterial({ color: 0xd97706 });
+      const mat = new THREE.MeshBasicMaterial({ color: parseInt(THEME_COLORS.amber.replace("#", ""), 16) });
       const mesh = new THREE.Mesh(geo, mat);
       mesh.position.set(x, y, z);
       nodes.push({ mesh, label });
     });
 
     const lineMat = new THREE.LineBasicMaterial({
-      color: 0x44403c,
+      color: parseInt(THEME_COLORS.stone600.replace("#", ""), 16),
       transparent: true,
       opacity: 0.4,
     });
@@ -99,7 +100,7 @@ function Nodes({ onHover }: { onHover: (idx: number | null) => void }) {
 
     nodes.forEach((n, i) => {
       const mat = n.mesh.material as THREE.MeshBasicMaterial;
-      mat.color.setHex(nextHovered === i ? 0xfde68a : 0xd97706);
+      mat.color.setHex(nextHovered === i ? parseInt(THEME_COLORS.amberLight.replace("#", ""), 16) : parseInt(THEME_COLORS.amber.replace("#", ""), 16));
       n.mesh.scale.setScalar(nextHovered === i ? 1.4 : 1);
     });
   });
@@ -139,15 +140,13 @@ function Tooltip({ hovered }: { hovered: number | null }) {
         position: "fixed",
         left: 0,
         top: 0,
-        background: "#1c1917",
-        color: "#fde68a",
         padding: "6px 12px",
         borderRadius: "6px",
         fontSize: "13px",
         pointerEvents: "none",
-        border: "1px solid #d97706",
         zIndex: 50,
       }}
+      className="bg-card text-card-foreground border border-border shadow-md"
     >
       {stack[hovered]}
     </div>

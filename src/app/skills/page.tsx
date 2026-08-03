@@ -71,7 +71,7 @@ const skillPage = () => {
       </FramerWrapper>
 
       <FramerWrapper y={50} delay={0.1} className="w-full">
-        <p className="font-inter text-lg w-full text-muted-foreground max-sm:text-base max-w-2xl leading-relaxed">
+        <p className="font-inter text-lg w-full text-muted-foreground max-sm:text-base max-w-prose leading-relaxed">
           I have a solid understanding of HTML5,
           CSS3, JS, TS and React, including responsive design principles. I
           specialize in building web applications and sites using Javascript,

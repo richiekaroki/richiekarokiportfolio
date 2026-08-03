@@ -3,6 +3,7 @@
 import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { THEME_COLORS } from "@/lib/theme-colors";
 
 function Grid() {
   const ref = useRef<THREE.Group>(null!);
@@ -48,7 +49,7 @@ function Grid() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[lines, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color="#3b82f6" transparent opacity={0.12} />
+        <lineBasicMaterial color={THEME_COLORS.blue} transparent opacity={0.12} />
       </lineSegments>
     </group>
   );
@@ -80,7 +81,7 @@ function FloatingDots() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial color="#d97706" size={0.05} transparent opacity={0.7} sizeAttenuation />
+      <pointsMaterial color={THEME_COLORS.amber} size={0.05} transparent opacity={0.7} sizeAttenuation />
     </points>
   );
 }
