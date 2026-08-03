@@ -16,7 +16,7 @@ const featured = [
     description:
       "Production grade Job Applications API built with NestJS, TypeScript, PostgreSQL and Redis. Features JWT auth with refresh token rotation, 4 role RBAC, webhook delivery with HMAC SHA256 signing, rate limiting, and full Swagger documentation.",
     tags: ["NestJS", "TypeScript", "PostgreSQL", "Redis", "JWT"],
-    link: "https://job-application-api-production.up.railway.app/api/v1/docs",
+    link: "https://job-application-api-17rf.onrender.com/api/v1/docs",
     repo: "https://github.com/richiekaroki/job-application-api",
   },
   {

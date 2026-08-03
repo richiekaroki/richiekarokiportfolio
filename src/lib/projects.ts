@@ -20,7 +20,7 @@ export const projects: Project[] = [
     longDescription:
       "A production-grade Job Applications API designed for enterprise recruitment platforms. Built with NestJS and TypeScript, it handles secure authentication, role-based access control, and real-time webhook delivery for downstream integrations.",
     tags: ["NestJS", "TypeScript", "PostgreSQL", "Redis", "JWT"],
-    link: "https://job-application-api-production.up.railway.app/api/v1/docs",
+    link: "https://job-application-api-17rf.onrender.com/api/v1/docs",
     repo: "https://github.com/richiekaroki/job-application-api",
     challenges: [
       "Implementing secure JWT auth with refresh token rotation without blocking legitimate users",
