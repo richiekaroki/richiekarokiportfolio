@@ -108,11 +108,11 @@ export default function AboutContent() {
   }, []);
 
   return (
-    <div className="min-h-0 lg:min-h-dvh w-full relative flex flex-col overflow-hidden">
+    <div className="min-h-0 lg:min-h-dvh w-full relative flex flex-col overflow-x-hidden">
       <AmbientDepth section={activeSection} />
 
       {/* Mobile nav (horizontal tabs) */}
-      <div className="lg:hidden sticky top-16 z-20 w-full">
+      <div className="lg:hidden relative z-20">
         <SectionNav items={navItems} activeSection={activeSection} />
       </div>
 
