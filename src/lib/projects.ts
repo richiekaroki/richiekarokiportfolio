@@ -43,6 +43,7 @@ export const projects: Project[] = [
     tags: ["NestJS", "React", "TypeScript", "Full Stack"],
     link: "https://broadcast-hub-web.vercel.app/",
     repo: "https://github.com/richiekaroki/broadcast-hub",
+    image: "/screenshots/broadcast-hub.png",
     challenges: [
       "Building a real-time content workflow that handles concurrent edits without data loss",
       "Designing a clean API layer that both the React frontend and third-party integrations can consume",
@@ -64,6 +65,7 @@ export const projects: Project[] = [
     tags: ["TypeScript", "React", "Enterprise", "Frontend"],
     link: "https://onboarding-frontend.vercel.app/",
     repo: "https://github.com/richiekaroki/actserv-onboarding-platform",
+    image: "/screenshots/actserv-onboarding.png",
     challenges: [
       "Building a multi-step onboarding flow that adapts to different employee roles and departments",
       "Implementing document upload with validation and status tracking",
@@ -85,6 +87,7 @@ export const projects: Project[] = [
     tags: ["TypeScript", "React", "Analytics", "Dashboard"],
     link: "https://product-dashboard-nine-kappa.vercel.app/",
     repo: "https://github.com/richiekaroki/product-dashboard",
+    image: "/screenshots/product-dashboard.png",
     challenges: [
       "Rendering large datasets without blocking the main thread",
       "Building responsive charts that work across all screen sizes",
@@ -106,6 +109,7 @@ export const projects: Project[] = [
     tags: ["Vue", "JavaScript", "Responsive"],
     link: "https://zoo-app-nu.vercel.app",
     repo: "https://github.com/richiekaroki/zoo-app",
+    image: "/screenshots/zoo-app.png",
     challenges: [
       "Building a responsive interface that works well on both desktop and mobile",
       "Implementing smooth animal browsing with filtering and categorization",
@@ -127,6 +131,7 @@ export const projects: Project[] = [
     tags: ["SvelteKit", "TypeScript", "Tailwind CSS", "State Management"],
     link: "https://wam-sportsbook-landing.vercel.app/",
     repo: "https://github.com/richiekaroki/wam-sportsbook-landing",
+    image: "/screenshots/wam-sportsbook.png",
     challenges: [
       "Implementing real-time bet slip state that stays in sync across components",
       "Building derived odds calculations that update instantly as selections change",

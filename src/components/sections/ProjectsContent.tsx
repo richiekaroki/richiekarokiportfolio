@@ -27,6 +27,7 @@ const featured = [
     tags: ["NestJS", "React", "TypeScript", "Full Stack"],
     link: "https://broadcast-hub-web.vercel.app/",
     repo: "https://github.com/richiekaroki/broadcast-hub",
+    image: "/screenshots/broadcast-hub.png",
   },
   {
     slug: "actserv-onboarding",
@@ -36,6 +37,7 @@ const featured = [
     tags: ["TypeScript", "React", "Enterprise", "Frontend"],
     link: "https://onboarding-frontend.vercel.app/",
     repo: "https://github.com/richiekaroki/actserv-onboarding-platform",
+    image: "/screenshots/actserv-onboarding.png",
   },
   {
     slug: "product-dashboard",
@@ -45,6 +47,7 @@ const featured = [
     tags: ["TypeScript", "React", "Analytics", "Dashboard"],
     link: "https://product-dashboard-nine-kappa.vercel.app/",
     repo: "https://github.com/richiekaroki/product-dashboard",
+    image: "/screenshots/product-dashboard.png",
   },
   {
     slug: "zoo-app",
@@ -54,6 +57,7 @@ const featured = [
     tags: ["Vue", "JavaScript", "Responsive"],
     link: "https://zoo-app-nu.vercel.app",
     repo: "https://github.com/richiekaroki/zoo-app",
+    image: "/screenshots/zoo-app.png",
   },
 ];
 
@@ -66,6 +70,7 @@ const more = [
     tags: ["SvelteKit", "TypeScript", "Tailwind CSS", "State Management"],
     link: "https://wam-sportsbook-landing.vercel.app/",
     repo: "https://github.com/richiekaroki/wam-sportsbook-landing",
+    image: "/screenshots/wam-sportsbook.png",
   },
   {
     slug: "court-case-app",
