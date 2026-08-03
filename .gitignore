@@ -94,5 +94,6 @@ out/
 *.jpeg
 *.jpg
 !public/*.jpg
+!public/screenshots/*.png
 !src/assets/*.jpg
 !src/assets/*.png
