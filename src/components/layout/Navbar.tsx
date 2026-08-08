@@ -6,6 +6,7 @@ import {
   Mail,
   User,
   FolderGit2,
+  Pen,
 } from 'lucide-react';
 
 import { Dock, DockIcon, DockItem, DockLabel } from '@/components/animation/DockAnimation';
@@ -30,6 +31,11 @@ const data = [
     title: 'Projects',
     icon: <FolderGit2 className='h-full w-full' />,
     href: '/projects',
+  },
+  {
+    title: 'Blog',
+    icon: <Pen className='h-full w-full' />,
+    href: '/blog',
   },
   {
     title: 'Contact',
