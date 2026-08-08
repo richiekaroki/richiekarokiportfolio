@@ -7,7 +7,7 @@ const HoloGrid = dynamic(() => import("@/components/three/HoloGrid"), { ssr: fal
 
 export default function HoloGridBackground() {
   return (
-    <div className="absolute inset-0 z-0 opacity-40">
+    <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
       <LazyLoad className="w-full h-full">
         <HoloGrid />
       </LazyLoad>

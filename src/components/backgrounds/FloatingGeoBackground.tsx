@@ -7,7 +7,7 @@ const FloatingGeo = dynamic(() => import("@/components/three/FloatingGeo"), { ss
 
 export default function FloatingGeoBackground() {
   return (
-    <div className="absolute inset-0 z-0 opacity-40">
+    <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
       <LazyLoad className="w-full h-full">
         <FloatingGeo />
       </LazyLoad>

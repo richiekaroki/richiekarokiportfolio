@@ -45,7 +45,7 @@ export default function HomeContent() {
       {/* ── HERO SECTION ── */}
       <section className="relative w-full min-h-0 lg:min-h-dvh flex items-start">
         {/* Particle background */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <ParticleHero hoveredCta={hoveredCta} />
         </div>
 
