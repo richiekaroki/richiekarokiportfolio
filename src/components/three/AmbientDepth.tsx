@@ -138,7 +138,7 @@ export default function AmbientDepth({ section = "bio" }: { section?: string }) 
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 10], fov: 55 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
+      <Canvas camera={{ position: [0, 0, 10], fov: 55 }} dpr={[1, 1.5]} style={{ background: "transparent", pointerEvents: "none" }}>
         <FloatingShapes section={section} />
       </Canvas>
     </div>

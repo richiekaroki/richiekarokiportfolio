@@ -88,7 +88,7 @@ function FloatingDots() {
 
 function HoloGridScene() {
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 1.5]}>
+    <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 1.5]} style={{ pointerEvents: "none" }}>
       <Grid />
       <FloatingDots />
     </Canvas>

@@ -81,7 +81,7 @@ function FloatingGeoScene() {
   );
 
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 1.5]}>
+    <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 1.5]} style={{ pointerEvents: "none" }}>
       {shapes.map((s, i) => (
         <GeoShape key={i} {...s} />
       ))}

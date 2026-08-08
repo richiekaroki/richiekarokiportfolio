@@ -59,7 +59,7 @@ function PulseWaveScene({ typing, submitted }: { typing?: boolean; submitted?: b
   const speed = submitted ? 3 : baseSpeed;
 
   return (
-    <Canvas camera={{ position: [0, 2, 6], fov: 50 }} dpr={[1, 1.5]}>
+    <Canvas camera={{ position: [0, 2, 6], fov: 50 }} dpr={[1, 1.5]} style={{ pointerEvents: "none" }}>
       {activeRings.map((r, i) => (
         <PulseRing key={i} {...r} speed={speed} />
       ))}

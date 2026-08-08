@@ -140,7 +140,7 @@ export default function ParticleHero({ hoveredCta }: { hoveredCta?: React.RefObj
 
   return (
     <div ref={containerRef} style={{ position: "relative", width: "100%", height: "100%" }}>
-      <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 1.5]} style={{ background: "transparent" }}>
+      <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 1.5]} style={{ background: "transparent", pointerEvents: "none" }}>
         <ParticleField morphed={morphed} count={particleCount} scrollProgress={scrollProgress} hoveredCta={ctaRef} />
       </Canvas>
     </div>
