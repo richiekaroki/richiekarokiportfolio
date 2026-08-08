@@ -15,7 +15,7 @@ import dynamic from "next/dynamic";
 const ParticleHero = dynamic(() => import("@/components/three/ParticleHero"), { ssr: false });
 
 const featured = projects.filter(p =>
-  ["job-application-api", "broadcast-hub", "actserv-onboarding", "zoo-app"].includes(p.slug)
+  ["job-application-api", "aivirtualmouse", "wam-onboarding", "broadcast-hub"].includes(p.slug)
 );
 
 const services = [
@@ -43,7 +43,7 @@ export default function HomeContent() {
   return (
     <div className="w-full">
       {/* ── HERO SECTION ── */}
-      <section className="relative w-full min-h-0 lg:min-h-dvh flex items-start lg:items-center">
+      <section className="relative w-full min-h-0 lg:min-h-dvh flex items-start">
         {/* Particle background */}
         <div className="absolute inset-0 z-0">
           <ParticleHero hoveredCta={hoveredCta} />

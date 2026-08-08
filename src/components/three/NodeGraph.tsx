@@ -157,6 +157,7 @@ export default function NodeGraph() {
   const [hovered, setHovered] = useState<number | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const handleHover = useCallback((idx: number | null) => {
     setHovered(idx);
@@ -172,17 +173,17 @@ export default function NodeGraph() {
     return () => mqDesktop.removeEventListener("change", handlerDesktop);
   }, []);
 
-  const showStatic = prefersReducedMotion || !isDesktop;
+  const showStatic = prefersReducedMotion || !isDesktop || hasError;
 
   return (
     <div className="relative w-full h-[50vh] min-h-[350px]">
       {showStatic ? (
         <div className="w-full h-full flex items-center justify-center">
-          <div className="flex flex-wrap gap-3 justify-center max-w-md">
+          <div className="flex flex-wrap gap-3 justify-center max-w-lg px-4">
             {stack.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1.5 rounded-full bg-secondary text-sm text-muted-foreground border border-border"
+                className="px-4 py-2 rounded-full bg-secondary text-sm font-medium text-muted-foreground border border-border"
               >
                 {tech}
               </span>
@@ -191,7 +192,12 @@ export default function NodeGraph() {
         </div>
       ) : (
         <>
-          <Canvas camera={{ position: [0, 0, 9], fov: 60 }} dpr={[1, 1.5]}>
+          <Canvas
+            camera={{ position: [0, 0, 9], fov: 60 }}
+            dpr={[1, 1.5]}
+            onCreated={() => {}}
+            onError={() => setHasError(true)}
+          >
             <Nodes onHover={handleHover} />
           </Canvas>
           <Tooltip hovered={hovered} />

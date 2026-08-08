@@ -11,11 +11,11 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { projects } from "@/lib/projects";
 
 const featured = projects.filter(p =>
-  ["job-application-api", "broadcast-hub", "actserv-onboarding", "product-dashboard", "zoo-app"].includes(p.slug)
+  ["job-application-api", "aivirtualmouse", "wam-onboarding", "broadcast-hub", "wam-sportsbook"].includes(p.slug)
 );
 
 const more = projects.filter(p =>
-  ["solami-sportsbook", "court-case-app", "livestock-demo"].includes(p.slug)
+  ["product-dashboard", "zoo-app", "kanban-task-manager", "court-case-app", "livestock-demo"].includes(p.slug)
 );
 
 export default function ProjectsContent() {

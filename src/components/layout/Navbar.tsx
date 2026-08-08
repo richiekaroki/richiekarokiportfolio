@@ -45,7 +45,7 @@ const Navbar = () => {
     <>
       {/* Desktop: top dock + theme toggle */}
       <nav
-        className="fixed top-5 right-0 left-0 px-3 sm:px-5 m-auto w-full sm:w-fit hidden lg:flex items-center justify-between bg-transparent z-50"
+        className="fixed top-5 right-0 left-0 px-3 sm:px-5 m-auto w-full sm:w-fit hidden lg:flex items-center justify-between z-50"
         aria-label="Main navigation"
       >
         <Link href="/" aria-label="Home" className="flex items-center">

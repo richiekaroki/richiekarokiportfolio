@@ -156,7 +156,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ value, num, featured }) => {
                 "transition-all hover:translate-y-[-1px] hover:shadow-md active:scale-95 group/btn"
               )}
             >
-              {value.slug ? "View Case Study" : "Visit Project"}
+              {value.slug ? "Case Study" : "Visit Project"}
               <ArrowUpRight className="h-4 w-4 ml-1 opacity-0 -translate-x-1 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-200" />
             </Link>
           </div>
