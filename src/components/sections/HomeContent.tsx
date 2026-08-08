@@ -50,7 +50,7 @@ export default function HomeContent() {
         </div>
 
         {/* Hero content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-16 lg:pt-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-8 pb-16 lg:pt-20">
           <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-12 lg:gap-20">
             {/* LEFT — Text */}
             <FramerWrapper className="flex-1 max-w-xl" y={0} x={-80}>
@@ -128,6 +128,35 @@ export default function HomeContent() {
           >
             Get in touch
           </Link>
+        </FramerWrapper>
+      </section>
+
+      {/* ── CLOSING CTA ── */}
+      <section className="w-full py-20">
+        <FramerWrapper y={50} className="w-full">
+          <div className="w-full p-8 sm:p-10 rounded-2xl border border-border/50 bg-secondary/30 text-center">
+            <h2 className="font-source-serif text-primary font-bold text-2xl sm:text-3xl leading-tight [text-wrap:balance]">
+              Let&apos;s build something together.
+            </h2>
+            <p className="mt-3 text-muted-foreground max-w-lg mx-auto leading-relaxed">
+              Whether you need a production app built, an API integrated, or want to
+              learn programming from a working engineer — I&apos;m ready.
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                href="/contact?type=consulting"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-sky text-white font-medium hover:bg-primary-sky/90 active:scale-[0.97] transition-all"
+              >
+                Hire Me
+              </Link>
+              <Link
+                href="/contact?type=tutoring"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-background font-medium hover:bg-accent active:scale-[0.97] transition-all"
+              >
+                Learn With Me
+              </Link>
+            </div>
+          </div>
         </FramerWrapper>
       </section>
     </div>

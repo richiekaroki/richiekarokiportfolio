@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { useTransition, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { SendEmail } from "@/actions/send-email";
-import { CheckCircle, AlertCircle } from "lucide-react";
+import { CheckCircle, AlertCircle, Briefcase, GraduationCap } from "lucide-react";
 import { toast } from "sonner";
 
 const placeholders: Record<string, string> = {
@@ -54,7 +54,20 @@ const ContactForm = ({ onTyping, onSubmitStart }: { onTyping?: (typing: boolean)
       >
         <CardHeader>
           <CardTitle className="icon_underline">Send me a message</CardTitle>
-          <CardDescription>
+          <div className="flex items-center gap-2 mt-1">
+            {inquiryType === "tutoring" ? (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-primary-sky/10 text-primary-sky border border-primary-sky/20">
+                <GraduationCap className="h-3 w-3" />
+                Tutoring Inquiry
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-primary-sky/10 text-primary-sky border border-primary-sky/20">
+                <Briefcase className="h-3 w-3" />
+                Consulting Inquiry
+              </span>
+            )}
+          </div>
+          <CardDescription className="mt-2">
             {inquiryType === "tutoring"
               ? "Tell me what you want to learn. I'll get back to you within 24 hours."
               : "Tell me about your project. I'll get back to you within 24 hours."}
