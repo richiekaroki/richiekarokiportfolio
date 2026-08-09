@@ -55,7 +55,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
       {project.image && (
         <FramerWrapper y={50} delay={0.15} className="w-full">
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-border/50 bg-secondary/30">
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-border/50 bg-secondary/30 shadow-sm dark:shadow-none ring-1 ring-black/5 dark:ring-white/10">
             <Image
               src={project.image}
               alt={`Screenshot of ${project.title}`}
