@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HomeContent from "@/components/sections/HomeContent";
+import GitHubSection from "@/components/sections/GitHubSection";
 
 export const metadata: Metadata = {
   title: {
@@ -30,6 +31,9 @@ export default function Home() {
   return (
     <div className="w-full">
       <HomeContent />
+      <div className="px-4 sm:px-6 lg:px-8">
+        <GitHubSection />
+      </div>
     </div>
   );
 }
