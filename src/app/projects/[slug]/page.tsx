@@ -15,6 +15,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
+
+  const ogUrl = new URL("/og", "https://richiekaroki.vercel.app");
+  ogUrl.searchParams.set("title", project.title);
+  ogUrl.searchParams.set("description", project.description);
+  ogUrl.searchParams.set("tags", project.tags.join(","));
+
   return {
     title: project.title,
     description: project.description,
@@ -22,6 +28,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: project.title,
       description: project.description,
       type: "article",
+      images: [
+        {
+          url: ogUrl.toString(),
+          width: 1200,
+          height: 630,
+          alt: `${project.title} - Richard Karoki`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.description,
+      images: [ogUrl.toString()],
     },
   };
 }

@@ -3,7 +3,18 @@ import { siteConfig } from "@/lib/config";
 
 export const runtime = "edge";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const title = searchParams.get("title") || siteConfig.name;
+  const description = searchParams.get("description") || siteConfig.description;
+  const tags = searchParams.get("tags")?.split(",").slice(0, 5) || [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "NestJS",
+    "Python",
+  ];
+
   return new ImageResponse(
     (
       <div
@@ -50,14 +61,14 @@ export async function GET() {
         </div>
         <div
           style={{
-            fontSize: "64px",
+            fontSize: title.length > 40 ? "48px" : "64px",
             fontWeight: "bold",
             color: "#ffffff",
             lineHeight: "1.1",
             marginBottom: "16px",
           }}
         >
-          {siteConfig.name}
+          {title}
         </div>
         <div
           style={{
@@ -67,18 +78,19 @@ export async function GET() {
             maxWidth: "600px",
           }}
         >
-          {siteConfig.description}
+          {description}
         </div>
         <div
           style={{
             display: "flex",
             gap: "12px",
             marginTop: "32px",
+            flexWrap: "wrap",
           }}
         >
-          {["TypeScript", "React", "Next.js", "NestJS", "Python"].map((tech) => (
+          {tags.map((tag) => (
             <div
-              key={tech}
+              key={tag}
               style={{
                 padding: "8px 16px",
                 borderRadius: "8px",
@@ -88,7 +100,7 @@ export async function GET() {
                 border: "1px solid #292524",
               }}
             >
-              {tech}
+              {tag}
             </div>
           ))}
         </div>
