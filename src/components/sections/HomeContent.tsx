@@ -20,8 +20,8 @@ const featured = projects.filter(p =>
 
 const services = [
   {
-    title: "Full-Stack Web Apps",
-    description: "Next.js, React, Vue, Laravel, Flask, Node/TypeScript. Production-grade applications built end to end.",
+    title: "Full Stack Web Apps",
+    description: "Next.js, React, Vue, Laravel, Flask, Node/TypeScript. Production grade applications built end to end.",
   },
   {
     title: "API Design & Integration",
@@ -33,7 +33,7 @@ const services = [
   },
   {
     title: "1:1 Programming Tutoring",
-    description: "Practical, project-based fundamentals taught by a working engineer. Beginner to early-intermediate.",
+    description: "Practical, project based fundamentals taught by a working engineer. Beginner to early intermediate.",
   },
 ];
 
@@ -90,13 +90,15 @@ export default function HomeContent() {
           <div className="w-16 h-1 bg-primary-sky mt-4" />
         </FramerWrapper>
 
-        <FramerWrapper y={50} delay={0.1} className="w-full mt-8">
+        <FramerWrapper y={40} delay={0.15} className="w-full mt-8">
           <ProjectCard value={featured[0]} num={0} featured />
         </FramerWrapper>
 
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           {featured.slice(1).map((val, indx) => (
-            <ProjectCard key={indx} value={val} num={indx + 1} />
+            <FramerWrapper key={indx} y={40} delay={0.2 + indx * 0.08} className="w-full">
+              <ProjectCard value={val} num={indx + 1} />
+            </FramerWrapper>
           ))}
         </div>
       </section>
@@ -110,18 +112,18 @@ export default function HomeContent() {
           <div className="w-16 h-1 bg-primary-sky mt-4" />
         </FramerWrapper>
 
-        <FramerWrapper y={50} delay={0.1} className="w-full mt-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {services.map((service, idx) => (
-              <div key={idx} className="p-5 rounded-lg border border-border/50 transition-all hover:shadow-md">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+          {services.map((service, idx) => (
+            <FramerWrapper key={idx} y={30} x={idx % 2 === 0 ? -20 : 20} delay={0.1 + idx * 0.08} className="w-full">
+              <div className="h-full p-5 rounded-lg border border-border/50 transition-all hover:shadow-md">
                 <h3 className="text-base font-semibold text-primary mb-2">{service.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
               </div>
-            ))}
-          </div>
-        </FramerWrapper>
+            </FramerWrapper>
+          ))}
+        </div>
 
-        <FramerWrapper y={50} delay={0.2} className="w-full mt-8">
+        <FramerWrapper y={20} delay={0.4} className="w-full mt-8">
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-sky text-white font-medium hover:bg-primary-sky/90 active:scale-[0.97] transition-all"
@@ -158,7 +160,7 @@ export default function HomeContent() {
               role: "Junior Developer, Andela",
             },
           ].map((t, idx) => (
-            <FramerWrapper key={idx} y={50} delay={0.1 + idx * 0.1} className="w-full">
+            <FramerWrapper key={idx} y={40} x={idx === 0 ? -20 : idx === 2 ? 20 : 0} delay={0.1 + idx * 0.1} className="w-full">
               <div className="h-full p-6 rounded-xl border border-border/50 bg-card transition-all hover:shadow-md">
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                   &ldquo;{t.text}&rdquo;
@@ -175,14 +177,14 @@ export default function HomeContent() {
 
       {/* ── CLOSING CTA ── */}
       <section className="w-full py-20">
-        <FramerWrapper y={50} className="w-full">
+        <FramerWrapper y={30} scale={0.98} className="w-full">
           <div className="w-full p-8 sm:p-10 rounded-2xl border border-border/50 bg-secondary/30 text-center">
             <h2 className="font-source-serif text-primary font-bold text-2xl sm:text-3xl leading-tight [text-wrap:balance]">
               Let&apos;s build something together.
             </h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto leading-relaxed">
               Whether you need a production app built, an API integrated, or want to
-              learn programming from a working engineer — I&apos;m ready.
+              learn programming from a working engineer, I&apos;m ready.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
