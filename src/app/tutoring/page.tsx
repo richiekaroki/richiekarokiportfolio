@@ -10,7 +10,7 @@ import StructuredData from "@/components/seo/StructuredData";
 export const metadata: Metadata = {
   title: "Tutoring",
   description:
-    "1:1 programming tutoring. Practical, project-based, beginner-friendly sessions by a working software engineer.",
+    "1:1 programming tutoring. Practical, project based, beginner friendly sessions by a working software engineer.",
 };
 
 const subjects = [
@@ -20,7 +20,7 @@ const subjects = [
     description: "Variables, logic, functions, OOP basics. The building blocks that every developer needs.",
   },
   {
-    title: "Project-Based Learning",
+    title: "Project Based Learning",
     icon: <Users className="h-5 w-5" />,
     description: "Real projects, not just theory. Build something you can show in your portfolio.",
   },

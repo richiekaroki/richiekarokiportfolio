@@ -8,11 +8,11 @@ export const metadata: Metadata = {
     template: "%s | Richard Karoki",
   },
   description:
-    "Software Engineer building things that live on the internet — from AI systems to production-ready APIs. Based in Kenya.",
+    "Software Engineer building things that live on the internet, from AI systems to production ready APIs. Based in Kenya.",
   openGraph: {
     title: "Richard Karoki",
     description:
-      "Software Engineer building things that live on the internet — from AI systems to production-ready APIs.",
+      "Software Engineer building things that live on the internet, from AI systems to production ready APIs.",
     url: "https://richiekaroki.vercel.app",
     siteName: "Richard Karoki",
     locale: "en_US",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Richard Karoki",
     description:
-      "Software Engineer building things that live on the internet — from AI systems to production-ready APIs.",
+      "Software Engineer building things that live on the internet, from AI systems to production ready APIs.",
     creator: "@richiekaroki",
   },
 };

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { projects, getProjectBySlug } from "@/lib/projects";
@@ -52,7 +53,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </p>
       </FramerWrapper>
 
-      <FramerWrapper y={50} delay={0.15} className="w-full">
+      {project.image && (
+        <FramerWrapper y={50} delay={0.15} className="w-full">
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-border/50 bg-secondary/30">
+            <Image
+              src={project.image}
+              alt={`Screenshot of ${project.title}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 900px"
+            />
+          </div>
+        </FramerWrapper>
+      )}
+
+      <FramerWrapper y={50} delay={0.2} className="w-full">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
