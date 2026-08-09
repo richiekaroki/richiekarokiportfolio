@@ -74,7 +74,7 @@ function FloatingShapes({ section }: { section: string }) {
         color: hexToInt(THEME_COLORS.amber),
         wireframe: true,
         transparent: true,
-        opacity: 0,
+        opacity: 0.25,
       });
       const mesh = new THREE.Mesh(geo, mat);
       const angle = (i / SHAPES_COUNT) * Math.PI * 2;
@@ -84,7 +84,8 @@ function FloatingShapes({ section }: { section: string }) {
         Math.sin(angle) * radius * 0.6,
         -2 - Math.random() * 3
       );
-      mesh.scale.setScalar(0.01);
+      const baseScale = 0.7 + Math.random() * 0.5;
+      mesh.scale.setScalar(baseScale);
       result.push({
         mesh,
         velocity: new THREE.Vector3(),
@@ -95,8 +96,8 @@ function FloatingShapes({ section }: { section: string }) {
         ).normalize(),
         baseOpacity: 0.2 + Math.random() * 0.15,
         targetOpacity: 0.2 + Math.random() * 0.15,
-        baseScale: 0.7 + Math.random() * 0.5,
-        targetScale: 0.7 + Math.random() * 0.5,
+        baseScale,
+        targetScale: baseScale,
         orbitRadius: radius,
         orbitSpeed: 0.1 + Math.random() * 0.15,
         orbitOffset: angle,
@@ -154,16 +155,16 @@ function FloatingShapes({ section }: { section: string }) {
 
       s.targetOpacity = s.baseOpacity * targetConfig.current.density;
       s.targetScale = s.baseScale * (0.8 + targetConfig.current.density * 0.2);
-      mat.opacity = lerp(mat.opacity, s.targetOpacity, clampedDelta * 3);
+      mat.opacity = lerp(mat.opacity, s.targetOpacity, clampedDelta * 6);
 
       const currentColorInt = mat.color.getHex();
       if (currentColorInt !== currentColor) {
-        const blended = lerpColor(currentColorInt, currentColor, clampedDelta * 2);
+        const blended = lerpColor(currentColorInt, currentColor, clampedDelta * 3);
         mat.color.setHex(blended);
       }
 
       const currentScale = s.mesh.scale.x;
-      const newScale = lerp(currentScale, s.targetScale, clampedDelta * 2);
+      const newScale = lerp(currentScale, s.targetScale, clampedDelta * 4);
       s.mesh.scale.setScalar(newScale);
 
       s.mesh.rotation.x += s.orbitSpeed * speed * clampedDelta * 0.5;
@@ -173,8 +174,8 @@ function FloatingShapes({ section }: { section: string }) {
       const orbitAngle = time * s.orbitSpeed * speed + s.orbitOffset;
       const targetX = Math.cos(orbitAngle) * s.orbitRadius;
       const targetY = Math.sin(orbitAngle) * s.orbitRadius * 0.6;
-      s.mesh.position.x = lerp(s.mesh.position.x, targetX, clampedDelta * 0.5);
-      s.mesh.position.y = lerp(s.mesh.position.y, targetY, clampedDelta * 0.5);
+      s.mesh.position.x = lerp(s.mesh.position.x, targetX, clampedDelta * 2);
+      s.mesh.position.y = lerp(s.mesh.position.y, targetY, clampedDelta * 2);
 
       vec.copy(s.mesh.position);
       vec.project(camera);
