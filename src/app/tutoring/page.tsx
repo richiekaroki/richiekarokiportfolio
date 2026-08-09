@@ -40,7 +40,7 @@ const testimonials = [
   {
     name: "Kevin Kipchoge",
     role: "CS Student, UoN",
-    text: "My university courses were mostly theory. Richard showed me how to actually build things — real APIs, real databases, real deployment. I landed my first internship two months after starting sessions.",
+    text: "My university courses were mostly theory. Richard showed me how to actually build things, real APIs, real databases, real deployment. I landed my first internship two months after starting sessions.",
   },
   {
     name: "Cecilia Wambui",
@@ -51,7 +51,7 @@ const testimonials = [
 
 const formatDetails = [
   { label: "Format", value: "1:1 sessions, online (or in-person if applicable)" },
-  { label: "Level", value: "Beginner to early-intermediate" },
+  { label: "Level", value: "Beginner to early intermediate" },
   { label: "Scheduling", value: "Flexible. Evenings and weekends available" },
 ];
 

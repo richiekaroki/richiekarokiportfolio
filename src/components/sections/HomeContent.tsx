@@ -131,6 +131,48 @@ export default function HomeContent() {
         </FramerWrapper>
       </section>
 
+      {/* ── TESTIMONIALS ── */}
+      <section className="w-full py-16">
+        <FramerWrapper y={0} x={-50} className="w-full">
+          <h2 className="font-source-serif text-primary font-bold text-3xl sm:text-4xl leading-tight [text-wrap:balance]">
+            What People Say
+          </h2>
+          <div className="w-16 h-1 bg-primary-sky mt-4" />
+        </FramerWrapper>
+
+        <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+          {[
+            {
+              text: "Richard built our entire rental matching platform from scratch. The Firebase integration alone saved us months of work. He delivered on time and the system has been rock solid since launch.",
+              name: "Wanjiku Mwangi",
+              role: "Founder, SafeHouse Tech",
+            },
+            {
+              text: "We needed a production grade API with JWT auth and webhook delivery. Richard did not just build it, he documented everything, wrote tests, and walked our team through the architecture. Highly recommend.",
+              name: "Otieno Odhiambo",
+              role: "CTO, Payroll Africa",
+            },
+            {
+              text: "I went from knowing zero JavaScript to building my first React app in 8 weeks. Richard explains things in a way that actually makes sense. He teaches you how to think like a developer.",
+              name: "Faith Njeri",
+              role: "Junior Developer, Andela",
+            },
+          ].map((t, idx) => (
+            <FramerWrapper key={idx} y={50} delay={0.1 + idx * 0.1} className="w-full">
+              <div className="h-full p-6 rounded-xl border border-border/50 bg-card transition-all hover:shadow-md">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <div>
+                  <p className="text-sm font-medium text-primary">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.role}</p>
+                </div>
+              </div>
+            </FramerWrapper>
+          ))}
+        </div>
+      </section>
+
       {/* ── CLOSING CTA ── */}
       <section className="w-full py-20">
         <FramerWrapper y={50} className="w-full">

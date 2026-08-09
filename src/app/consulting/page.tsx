@@ -50,7 +50,7 @@ const testimonials = [
   {
     name: "Otieno Odhiambo",
     role: "CTO, Payroll Africa",
-    text: "We needed a production-grade API with JWT auth and webhook delivery. Richard didn't just build it — he documented everything, wrote tests, and walked our team through the architecture. Highly recommend.",
+    text: "We needed a production grade API with JWT auth and webhook delivery. Richard did not just build it, he documented everything, wrote tests, and walked our team through the architecture. Highly recommend.",
   },
   {
     name: "Amina Hassan",
